@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Tong Ye Zhang — game designer, technical artist and player researcher.">
+<meta property="og:title" content="Tong Ye Zhang">
+<meta property="og:description" content="Game designer, technical artist and player researcher.">
+<title>Tong Ye Zhang Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Hanken+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+  :root{
+    --ink:#0b0b0b;
+    --paper:#ffffff;
+    --grey:#5c5c5c;
+    --rule:3px solid var(--ink);
+    --display:"Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
+    --body:"Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
+    --mono:"JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+    --grain:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .06 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    color-scheme: light;
+  }
+  *{box-sizing:border-box}
+  html,body{background:var(--paper);color:var(--ink)}
+  body{font-family:var(--body);font-size:16px;line-height:1.6;margin:0}
+
+  .layout{display:grid;grid-template-columns:minmax(110px,1fr) minmax(0,760px) minmax(110px,1fr);min-height:100dvh}
+
+  /* ---------- eye panels ---------- */
+  .eyes{position:sticky;top:0;height:100dvh;overflow:hidden;background:var(--ink);cursor:crosshair}
+  .eyes canvas{display:block;width:100%;height:100%}
+  .tag{position:absolute;left:16px;bottom:16px;background:var(--paper);color:var(--ink);border:var(--rule);
+       font:600 11px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;padding:8px 10px;box-shadow:4px 4px 0 var(--paper);pointer-events:none}
+
+  /* ---------- centre column ---------- */
+  main,nav,.slot-label,.links a{background-image:var(--grain)}
+  main{background-color:#fbfaf8;border-inline:var(--rule);padding-inline:clamp(20px,5vw,56px);padding-block:0 64px;min-width:0}
+
+  nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background-color:#fbfaf8;border-bottom:var(--rule);
+      display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-block:14px;
+      margin-inline:calc(-1 * clamp(20px,5vw,56px));padding-inline:clamp(20px,5vw,56px)}
+  .mark{font:900 26px/1 var(--display);letter-spacing:.02em;text-decoration:none;color:var(--ink)}
+  nav ul{display:flex;gap:18px;flex-wrap:wrap;list-style:none;margin:0;padding:0}
+  nav a{font:600 12px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink);text-decoration:none;padding-block:4px;border-bottom:2px solid transparent}
+  nav a:hover{border-bottom-color:var(--ink)}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+
+  section{padding-block:56px 8px;scroll-margin-top:64px}
+  .hero{padding-block:48px 8px}
+  h1{font:900 clamp(64px,13vw,132px)/.84 var(--display);text-transform:uppercase;margin:0;letter-spacing:-.005em}
+  .roles{font:600 13px/1.5 var(--mono);letter-spacing:.1em;text-transform:uppercase;margin:22px 0 0;display:flex;flex-wrap:wrap;gap:6px 10px}
+  .roles span{border:2px solid var(--ink);padding:4px 8px}
+  .lede{font-size:clamp(18px,2.2vw,21px);line-height:1.5;max-width:40ch;margin:24px 0 32px}
+
+  .sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;border-bottom:var(--rule);padding-bottom:10px;margin-bottom:28px}
+  h2{font:900 clamp(40px,7vw,64px)/.9 var(--display);text-transform:uppercase;margin:0}
+  .count{font:600 12px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--grey)}
+  h3{font:800 clamp(28px,4vw,36px)/1 var(--display);text-transform:uppercase;margin:0;text-wrap:balance}
+  p{margin:0}
+  .meta{font:400 12px/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--grey)}
+
+  /* ---------- placeholder slots (ben-day dots) ---------- */
+  .slot{position:relative;border:var(--rule);width:100%;max-width:100%;
+        background-color:var(--paper);
+        background-image:radial-gradient(circle,var(--ink) 1.3px,transparent 1.6px);
+        background-size:7px 7px;display:grid;place-items:center;padding:16px}
+  .r169{aspect-ratio:16/9}.r43{aspect-ratio:4/3}.r32{aspect-ratio:3/2}
+  .slot-label{background-color:var(--paper);border:var(--rule);box-shadow:5px 5px 0 var(--ink);padding:10px 14px;text-align:center;
+              font:600 12px/1.45 var(--mono);letter-spacing:.08em;text-transform:uppercase;max-width:90%}
+  .slot-label small{display:block;font-weight:400;text-transform:none;letter-spacing:.02em;margin-top:4px;color:var(--grey)}
+
+  /* ---------- work ---------- */
+  .work{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px 28px}
+  .card{display:flex;flex-direction:column;gap:14px}
+  .card.wide{grid-column:1 / -1}
+  .card .desc{color:#262626;max-width:62ch}
+  .chips{display:flex;flex-wrap:wrap;gap:6px;list-style:none;margin:0;padding:0}
+  .chips li{font:400 12px/1 var(--mono);border:1.5px solid var(--ink);padding:6px 8px}
+  .chips li.empty{background:var(--ink);color:var(--paper)}
+  .card.pending h3{color:var(--grey)}
+
+  /* ---------- research ---------- */
+  .research{display:grid;gap:36px}
+  .paper{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:start}
+  .paper .txt{display:flex;flex-direction:column;gap:10px}
+  .figures{display:flex;flex-wrap:wrap;gap:6px 18px;font:600 13px/1.4 var(--mono)}
+
+  /* ---------- player record ---------- */
+  .record{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:var(--rule);border-left:var(--rule)}
+  .stat{border-right:var(--rule);border-bottom:var(--rule);padding:18px 16px 16px;display:flex;flex-direction:column;gap:6px;min-width:0}
+  .stat:nth-child(odd){background:var(--ink);color:var(--paper)}
+  .stat:nth-child(odd) .meta{color:#bdbdbd}
+  .stat b{font:900 clamp(38px,5vw,52px)/.9 var(--display);font-variant-numeric:tabular-nums}
+  .stat span:not(.meta){font-weight:500;font-size:15px;line-height:1.35}
+
+  /* ---------- experience ---------- */
+  .rows{list-style:none;margin:0;padding:0}
+  .rows li{display:grid;grid-template-columns:150px minmax(0,1fr);gap:16px;padding-block:14px;border-bottom:1.5px solid var(--ink)}
+  .rows li:last-child{border-bottom:0}
+  .rows .when{font:400 12px/1.7 var(--mono);letter-spacing:.06em;font-variant-numeric:tabular-nums}
+  .rows strong{display:block;font-weight:700}
+  .rows em{font-style:normal;color:var(--grey);display:block;font-size:15px}
+  .sub{font:600 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;margin:28px 0 4px}
+
+  .skills{display:grid;gap:14px}
+  .skills div{display:grid;grid-template-columns:150px minmax(0,1fr);gap:16px}
+  .skills dt{font:600 12px/1.7 var(--mono);letter-spacing:.08em;text-transform:uppercase}
+  .skills dd{margin:0}
+  dl{margin:0}
+
+  /* ---------- contact ---------- */
+  .contact{display:flex;flex-direction:column;gap:18px}
+  .mail{display:flex;flex-wrap:wrap;align-items:center;gap:12px}
+  .mail code{font:600 clamp(18px,3.4vw,28px)/1.2 var(--mono);user-select:all;word-break:break-all}
+  button{font:600 12px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;background:var(--ink);color:var(--paper);border:var(--rule);padding:10px 14px;cursor:pointer;box-shadow:4px 4px 0 #9a9a9a}
+  button:active{transform:translate(2px,2px);box-shadow:2px 2px 0 #9a9a9a}
+  .links{display:flex;flex-wrap:wrap;gap:10px}
+  .links a{font:600 13px/1 var(--mono);color:var(--ink);text-decoration:none;border:var(--rule);padding:12px 14px}
+  .links a:hover{background:var(--ink);color:var(--paper)}
+  .links a.todo{border-style:dashed;color:var(--grey)}
+  footer{margin-top:64px;padding-top:16px;border-top:var(--rule);font:400 12px/1.6 var(--mono);color:var(--grey);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+
+  @media (max-width:880px){
+    .layout{grid-template-columns:minmax(0,1fr)}
+    .eyes.right{display:none}
+    .eyes.left{position:relative;height:190px;border-bottom:var(--rule)}
+    main{border-inline:0}
+  }
+  @media (max-width:560px){
+    .work,.paper{grid-template-columns:minmax(0,1fr)}
+    .record{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .rows li,.skills div{grid-template-columns:minmax(0,1fr);gap:2px}
+  }
+</style>
+</head>
+<body>
+
+<div class="layout">
+  <aside class="eyes left" aria-label="Decorative field of sketched eyes that follow your pointer">
+    <canvas></canvas>
+    <span class="tag">Click · they blink</span>
+  </aside>
+
+  <main>
+    <nav aria-label="Sections">
+      <a class="mark" href="#top">TYZ</a>
+      <ul>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#player">Player</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <header class="hero" id="top">
+      <h1>Tong Ye<br>Zhang</h1>
+      <p class="roles"><span>Game Designer</span><span>Technical Artist</span><span>Player Researcher</span></p>
+      <p class="lede">I design games and study the people who play them. Twenty thousand hours as a player, a thesis on how games and players negotiate difficulty, and a day job shipping UX across five government applications at once.</p>
+      <div class="slot r169">
+        <span class="slot-label">Showreel<small>放 30–60 秒技術美術／遊戲片段 · 16:9 · 先上傳到 YouTube 或 Vimeo</small></span>
+      </div>
+    </header>
+
+    <section id="work">
+      <div class="sec-head"><h2>Work</h2><span class="count">4 projects · 2 slots open</span></div>
+      <div class="work">
+        <article class="card wide">
+          <div class="slot r169"><span class="slot-label">Decypress gameplay<small>放實機影片或 3–4 張關卡截圖</small></span></div>
+          <p class="meta">2021 · Narrative-action souls-like · Demo</p>
+          <h3>Decypress</h3>
+          <p class="desc">A dark-fantasy souls-like across four levels. I wrote the story, character backstories, dialogue and lore, composed the full soundtrack, and designed the collectibles, progression triggers and environmental storytelling that reward exploration.</p>
+          <ul class="chips"><li>Story &amp; lore</li><li>Dialogue</li><li>Original score</li><li>Progression</li><li>Environmental storytelling</li></ul>
+        </article>
+
+        <article class="card">
+          <div class="slot r43"><span class="slot-label">Board game photo<small>放桌面實拍、卡牌或規則書</small></span></div>
+          <p class="meta">2023 · Co-op board game · Print-and-play</p>
+          <h3>Dive Down the Dungeon Deep</h3>
+          <p class="desc">Core mechanic, turn structure, economy and numerical balance, designed from scratch. Three rounds of UX research (focus groups, blind playtests, longitudinal surveys, 120+ responses) reshaped turn length, economy and flow.</p>
+          <ul class="chips"><li>Core mechanic</li><li>Economy &amp; balance</li><li>Playtesting</li></ul>
+        </article>
+
+        <article class="card pending">
+          <div class="slot r43"><span class="slot-label">Tech art 01<small>放 Shader／VFX：改前改後對比 GIF 或拆解影片</small></span></div>
+          <p class="meta">Year · Engine · Tool</p>
+          <h3>Shader or VFX breakdown</h3>
+          <p class="desc">待填：這個效果要解決什麼問題、怎麼做、效能如何。</p>
+          <ul class="chips"><li class="empty">Empty slot</li></ul>
+        </article>
+
+        <article class="card pending wide">
+          <div class="slot r32"><span class="slot-label">Tech art 02<small>放工具／Pipeline 作品：介面截圖 + 使用前後流程對比</small></span></div>
+          <p class="meta">Year · Engine · Tool</p>
+          <h3>Tool or pipeline</h3>
+          <p class="desc">待填：這個工具幫美術或策劃省了什麼時間。</p>
+          <ul class="chips"><li class="empty">Empty slot</li></ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="research">
+      <div class="sec-head"><h2>Research</h2><span class="count">2 papers</span></div>
+      <div class="research">
+        <article class="paper">
+          <div class="slot r43"><span class="slot-label">Framework diagram<small>放 Negotiated Difficulty Framework 圖</small></span></div>
+          <div class="txt">
+            <p class="meta">2025 – present · Master's thesis, U of T</p>
+            <h3>Here Be Lions</h3>
+            <p>Reframing challenge design and difficulty adjustment as a negotiation between game and player. The result is the Negotiated Difficulty Framework for dynamic difficulty and retention design.</p>
+            <p class="figures"><span>8 dev interviews</span><span>590+ Reddit comments</span><span>35 games</span></p>
+          </div>
+        </article>
+        <article class="paper">
+          <div class="slot r43"><span class="slot-label">Field study<small>放現場照片或數據圖</small></span></div>
+          <div class="txt">
+            <p class="meta">2023 · Peer-reviewed · CGSA</p>
+            <h3>Captive Audience</h3>
+            <p>A study of time and player experience in online and paper Magic: The Gathering. Competitiveness emerged as a key modulator of flow state and retention.</p>
+            <p class="figures"><span>42 players</span><span>200+ games</span><span>5 locations</span></p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="player">
+      <div class="sec-head"><h2>Player record</h2><span class="count">20,000+ hours</span></div>
+      <div class="record">
+        <div class="stat"><span class="meta">Souls series</span><b>100%</b><span>Achievements, 2,500+ hours</span></div>
+        <div class="stat"><span class="meta">GG Strive · SF6</span><b>#142</b><span>Peak global rank</span></div>
+        <div class="stat"><span class="meta">Hearthstone</span><b>Legend</b><span>Multiple seasons</span></div>
+        <div class="stat"><span class="meta">MTG GP Vancouver</span><b>Day 2</b><span>Top 15%, plus RCQ wins</span></div>
+        <div class="stat"><span class="meta">PoE · Diablo · Last Epoch</span><b>3,000+</b><span>Hours of ARPG theorycrafting</span></div>
+        <div class="stat"><span class="meta">MTG Arena</span><b>Mythic</b><span>Ranked</span></div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="sec-head"><h2>About</h2><span class="count">EN · 粵 · 普 · 日</span></div>
+      <ul class="rows">
+        <li><span class="when">Jul 2026 – now</span><div><strong>UX/UI Engineer</strong><em>China Telecom Global · five concurrent government applications, AI-assisted prototyping for React and Flutter</em></div></li>
+        <li><span class="when">2018 – 2025</span><div><strong>Localization &amp; Creative Direction Associate</strong><em>Oak Smart Advertising Media · trilingual campaigns, part-time</em></div></li>
+        <li><span class="when">2023 – 2024</span><div><strong>Teaching Assistant</strong><em>University of Toronto · game design tutorials, playtesting and UX research mentoring</em></div></li>
+      </ul>
+      <p class="sub">Education</p>
+      <ul class="rows">
+        <li><span class="when">2025</span><div><strong>Master of Information</strong><em>University of Toronto · Culture &amp; Technology, UX Design, thesis pathway</em></div></li>
+        <li><span class="when">2023</span><div><strong>Bachelor of Arts</strong><em>University of Toronto Mississauga · CCIT, joint with Sheridan College</em></div></li>
+      </ul>
+      <p class="sub">Toolkit</p>
+      <dl class="skills">
+        <div><dt>Game design</dt><dd>Core mechanics, narrative design, prototyping, playtesting and iteration</dd></div>
+        <div><dt>Tools</dt><dd>Unity · Figma · Python · 待補：技術美術工具</dd></div>
+        <div><dt>AI</dt><dd>Agentic skill development, MCP integration, multi-agent workflows</dd></div>
+      </dl>
+    </section>
+
+    <section id="contact">
+      <div class="sec-head"><h2>Contact</h2><span class="count">Guangzhou / Toronto</span></div>
+      <div class="contact">
+        <div class="mail"><code id="email">haztyr42@gmail.com</code><button type="button" id="copy">Copy</button></div>
+        <div class="links">
+          <a href="https://www.linkedin.com/in/tong-ye-zhang" target="_blank" rel="noopener">LinkedIn ↗</a>
+          <a class="todo" href="#contact">Résumé PDF（待放）</a>
+          <a class="todo" href="#contact">ArtStation（待放）</a>
+        </div>
+      </div>
+      <footer><span>© 2026 Tong Ye Zhang</span><span>Eyes drawn live in canvas</span></footer>
+    </section>
+  </main>
+
+  <aside class="eyes right" aria-hidden="true"><canvas></canvas></aside>
+</div>
+
+<script>
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const fields = [...document.querySelectorAll('.eyes')].map(el => ({ el, cv: el.querySelector('canvas'), eyes: [], bg: null }));
+  let target = { x: innerWidth / 2, y: innerHeight / 2 };
+
+  // cheap hash + value noise for ink, paper and grain
+  function hash(x, y) {
+    let h = (Math.imul(x | 0, 374761393) + Math.imul(y | 0, 668265263)) | 0;
+    h = Math.imul(h ^ (h >>> 13), 1274126177);
+    return ((h ^ (h >>> 16)) >>> 0) / 4294967296;
+  }
+  function vnoise(x, y) {
+    const xi = Math.floor(x), yi = Math.floor(y), xf = x - xi, yf = y - yi;
+    const u = xf * xf * (3 - 2 * xf), v = yf * yf * (3 - 2 * yf);
+    const a = hash(xi, yi), b = hash(xi + 1, yi), c = hash(xi, yi + 1), d = hash(xi + 1, yi + 1);
+    return a + (b - a) * u + (c - a) * v + (a - b - c + d) * u * v;
+  }
+  let lastMove = -1e9;
+
+  function rng(seed) { return () => ((seed = (seed * 16807) % 2147483647) - 1) / 2147483646; }
+
+  function build(f) {
+    const r = f.el.getBoundingClientRect();
+    if (r.width < 2 || r.height < 2) { f.eyes = []; return; }
+    const dpr = Math.min(devicePixelRatio || 1, 2);
+    const W = r.width, H = r.height;
+    f.cv.width = Math.round(W * dpr); f.cv.height = Math.round(H * dpr);
+    f.dpr = dpr; f.W = W; f.H = H;
+    const a = W < 500 && H < 260 ? 34 : Math.max(34, Math.min(50, W / 4.2));
+    const P = a * 2, s = a / 2;
+    const ox = ((W % P) / 2), oy = 0;
+
+    // houndstooth ground
+    const bg = document.createElement('canvas');
+    bg.width = f.cv.width; bg.height = f.cv.height;
+    const bx = bg.getContext('2d');
+    const img = bx.createImageData(bg.width, bg.height), d = img.data;
+    for (let py = 0; py < bg.height; py++) {
+      const y = py / dpr - oy;
+      for (let px = 0; px < bg.width; px++) {
+        const x0 = px / dpr - ox;
+        // screen-print wobble on the edges
+        const x = x0 + (vnoise(x0 * 0.13, y * 0.13) - 0.5) * 2.4;
+        const yy = y + (vnoise(x0 * 0.13 + 71, y * 0.13 + 29) - 0.5) * 2.4;
+        const u = ((x % P) + P) % P, v = ((yy % P) + P) % P;
+        let black;
+        if (u < a && v < a) black = true;
+        else if (u >= a && v >= a) black = false;
+        else black = Math.floor((u + v) / s) % 2 === 0;
+        const g = hash(px, py);
+        let c;
+        if (black) {
+          // ink: mostly dense, with dry-brush patches where coverage thins
+          const n = vnoise(x0 * 0.045, y * 0.045) * 0.55 + vnoise(x0 * 0.35, y * 0.35) * 0.45;
+          c = 14 + g * 22;
+          if (n > 0.72) c += Math.min(150, (n - 0.72) * 700) * (0.5 + g);
+        } else {
+          // paper: soft tooth plus horizontal fibres and the odd speck
+          const fibre = vnoise(x0 * 0.9, y * 0.07) > 0.82 ? 16 : 0;
+          c = 252 - g * 14 - fibre;
+          if (g < 0.003) c = 120;
+        }
+        c = Math.max(0, Math.min(255, c));
+        const i = (py * bg.width + px) * 4;
+        d[i] = d[i + 1] = d[i + 2] = c; d[i + 3] = 255;
+      }
+    }
+    bx.putImageData(img, 0, 0);
+    f.bg = bg;
+
+    // graphite grain laid over the eyes every frame
+    const gr = document.createElement('canvas');
+    gr.width = bg.width; gr.height = bg.height;
+    const gx = gr.getContext('2d'), gi = gx.createImageData(gr.width, gr.height), gd = gi.data;
+    for (let k = 0; k < gd.length; k += 4) {
+      const r = hash(k * 0.25 + 991, 17);
+      if (r < 0.07) { gd[k] = gd[k + 1] = gd[k + 2] = 0; gd[k + 3] = 38 + r * 400; }
+      else if (r > 0.95) { gd[k] = gd[k + 1] = gd[k + 2] = 255; gd[k + 3] = 60; }
+    }
+    gx.putImageData(gi, 0, 0);
+    f.grain = gr;
+
+    // eyes sit in the solid body of each tooth: white eye on black, and on white
+    const eyes = [], rand = rng(Math.round(W * 7 + H * 13) || 7);
+    for (let j = -1; j * P < H + P; j++) for (let i = -1; i * P < W + P; i++) {
+      [[0.5, 0.5, 'black'], [1.5, 1.5, 'white']].forEach(([fx, fy, tooth]) => {
+        const x = i * P + fx * a + ox, y = j * P + fy * a + oy;
+        if (x < -a || x > W + a || y < -a || y > H + a) return;
+        const jit = Array.from({ length: 16 }, () => (rand() - 0.5) * 2.4);
+        eyes.push({
+          x, y, w: a * 0.9, h: a * 0.52, tooth, jit,
+          lash: Array.from({ length: 5 }, () => 0.8 + rand() * 0.5),
+          px: 0, py: 0, lag: 0.07 + rand() * 0.16,
+          blinkAt: performance.now() + 1500 + rand() * 9000
+        });
+      });
+    }
+    f.eyes = eyes;
+  }
+
+  function lid(ctx, w, hh, j, k) {
+    ctx.moveTo(-w / 2 + j[k], j[k + 1]);
+    ctx.quadraticCurveTo(j[k + 2], -hh * 2 + j[k + 3], w / 2 + j[k + 4], j[k + 5]);
+    ctx.quadraticCurveTo(j[k + 6], hh * 1.7 + j[k + 7], -w / 2 + j[k], j[k + 1]);
+  }
+
+  function drawEye(ctx, e, open, rect) {
+    const { w, h } = e, hh = (h / 2) * open;
+    const line = e.tooth === 'black' ? '#fff' : '#0b0b0b';
+    // pupil follows target
+    const dx = target.x - (rect.left + e.x), dy = target.y - (rect.top + e.y);
+    const dist = Math.hypot(dx, dy) || 1, k = Math.min(1, dist / 240);
+    e.px += (dx / dist * w * 0.25 * k - e.px) * e.lag;
+    e.py += (dy / dist * h * 0.22 * k - e.py) * e.lag;
+
+    ctx.save(); ctx.translate(e.x, e.y);
+    ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+
+    // crease + lashes in the tooth's contrast colour
+    if (open > 0.35) {
+      ctx.strokeStyle = line; ctx.lineWidth = 1.4;
+      ctx.beginPath();
+      ctx.moveTo(-w * 0.4, -hh * 0.95 + e.jit[8]);
+      ctx.quadraticCurveTo(e.jit[9], -hh * 2.7, w * 0.42, -hh * 0.9 + e.jit[10]);
+      ctx.stroke();
+    }
+    ctx.strokeStyle = line; ctx.lineWidth = 1.6;
+    ctx.beginPath();
+    for (let n = 0; n < 5; n++) {
+      const t = 0.18 + n * 0.16;
+      const bx = (1 - t) * (1 - t) * (-w / 2) + 2 * (1 - t) * t * 0 + t * t * (w / 2);
+      const by = 2 * (1 - t) * t * (-hh * 2);
+      const len = h * 0.32 * e.lash[n];
+      const ang = -Math.PI / 2 + (t - 0.5) * 1.6;
+      ctx.moveTo(bx, by);
+      ctx.lineTo(bx + Math.cos(ang) * len, by + Math.sin(ang) * len);
+    }
+    ctx.stroke();
+    // lower-lid hatching
+    ctx.globalAlpha = 0.7; ctx.lineWidth = 1;
+    ctx.beginPath();
+    for (let n = 0; n < 4; n++) {
+      const x0 = -w * 0.22 + n * w * 0.13, y0 = hh * 0.95 + 3;
+      ctx.moveTo(x0, y0); ctx.lineTo(x0 - 4, y0 + 5);
+    }
+    ctx.stroke(); ctx.globalAlpha = 1;
+
+    if (open > 0.06) {
+      // eyeball
+      ctx.beginPath(); lid(ctx, w, hh, new Array(16).fill(0), 0);
+      ctx.fillStyle = '#fff'; ctx.fill();
+      ctx.save(); ctx.clip();
+      const r = h * 0.44, ix = e.px, iy = e.py;
+      ctx.strokeStyle = '#0b0b0b';
+      ctx.lineWidth = 1.8; ctx.beginPath(); ctx.arc(ix, iy, r, 0, Math.PI * 2); ctx.stroke();
+      ctx.lineWidth = 0.9; ctx.beginPath();
+      for (let n = 0; n < 16; n++) {
+        const t = n / 16 * Math.PI * 2 + e.jit[11] * 0.1;
+        ctx.moveTo(ix + Math.cos(t) * r * 0.5, iy + Math.sin(t) * r * 0.5);
+        ctx.lineTo(ix + Math.cos(t) * r * 0.94, iy + Math.sin(t) * r * 0.94);
+      }
+      ctx.stroke();
+      // pencil cross-hatch inside the iris
+      ctx.save();
+      ctx.beginPath(); ctx.arc(ix, iy, r * 0.95, 0, Math.PI * 2); ctx.clip();
+      ctx.globalAlpha = 0.4; ctx.lineWidth = 0.7; ctx.beginPath();
+      for (let q = -r; q <= r; q += 2.6) {
+        ctx.moveTo(ix + q - r, iy + r); ctx.lineTo(ix + q + r, iy - r);
+      }
+      for (let q = -r; q <= r; q += 3.4) {
+        ctx.moveTo(ix + q - r, iy - r * 0.2 + r); ctx.lineTo(ix + q + r * 0.3, iy - r);
+      }
+      ctx.stroke(); ctx.restore();
+      // hatched shadow under the upper lid
+      ctx.globalAlpha = 0.45; ctx.lineWidth = 0.8; ctx.beginPath();
+      for (let n = 0; n < 9; n++) {
+        const hx = -w * 0.36 + n * w * 0.09, top = -hh * (1 - Math.pow(hx / (w / 2), 2)) * 0.95;
+        ctx.moveTo(hx, top); ctx.lineTo(hx + 3, top + h * 0.2);
+      }
+      ctx.stroke(); ctx.globalAlpha = 1;
+      ctx.fillStyle = '#0b0b0b'; ctx.beginPath(); ctx.arc(ix, iy, r * 0.46, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.arc(ix - r * 0.3, iy - r * 0.34, r * 0.17, 0, Math.PI * 2); ctx.fill();
+      // shadow of the upper lid
+      ctx.strokeStyle = '#0b0b0b'; ctx.lineWidth = 2.2;
+      ctx.beginPath(); ctx.moveTo(-w / 2, 0); ctx.quadraticCurveTo(0, -hh * 1.75, w / 2, 0); ctx.stroke();
+      ctx.restore();
+    }
+    // sketchy outline, drawn twice with jitter
+    ctx.strokeStyle = open > 0.06 ? '#0b0b0b' : line;
+    ctx.lineWidth = 1.5;
+    ctx.beginPath(); lid(ctx, w, hh, e.jit, 0); ctx.stroke();
+    ctx.lineWidth = 1;
+    ctx.beginPath(); lid(ctx, w, hh, e.jit.map(v => -v * 0.8), 0); ctx.stroke();
+    ctx.globalAlpha = 0.45; ctx.lineWidth = 0.7;
+    ctx.beginPath(); lid(ctx, w * 1.03, hh * 1.06, e.jit.map(v => v * 1.6), 0); ctx.stroke();
+    ctx.globalAlpha = 1;
+    ctx.restore();
+  }
+
+  function frame(now) {
+    if (!reduce && now - lastMove > 4000) {
+      const t = now / 1000;
+      target = { x: innerWidth * (0.5 + 0.34 * Math.sin(t * 0.43)), y: innerHeight * (0.5 + 0.3 * Math.sin(t * 0.71 + 1)) };
+    }
+    for (const f of fields) {
+      if (!f.eyes.length) continue;
+      const ctx = f.cv.getContext('2d');
+      const rect = f.el.getBoundingClientRect();
+      if (rect.bottom < 0 || rect.top > innerHeight) continue;
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.drawImage(f.bg, 0, 0);
+      ctx.setTransform(f.dpr, 0, 0, f.dpr, 0, 0);
+      for (const e of f.eyes) {
+        let open = 1;
+        if (!reduce) {
+          const bt = now - e.blinkAt;
+          if (bt > 0 && bt < 200) open = Math.abs(Math.cos(bt / 200 * Math.PI));
+          else if (bt >= 200) e.blinkAt = now + 2500 + Math.random() * 9000;
+        }
+        drawEye(ctx, e, open, rect);
+      }
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.drawImage(f.grain, 0, 0);
+    }
+    requestAnimationFrame(frame);
+  }
+
+  function move(x, y) { target = { x, y }; lastMove = performance.now(); }
+  addEventListener('pointermove', e => move(e.clientX, e.clientY), { passive: true });
+  addEventListener('pointerdown', e => move(e.clientX, e.clientY), { passive: true });
+
+  // click a panel: a blink wave spreads out from the click
+  fields.forEach(f => f.el.addEventListener('click', ev => {
+    if (reduce) return;
+    const now = performance.now();
+    fields.forEach(g => {
+      const r = g.el.getBoundingClientRect();
+      g.eyes.forEach(e => {
+        e.blinkAt = now + Math.hypot(r.left + e.x - ev.clientX, r.top + e.y - ev.clientY) * 1.3;
+      });
+    });
+  }));
+
+  let rt;
+  const rebuild = () => { clearTimeout(rt); rt = setTimeout(() => fields.forEach(build), 120); };
+  addEventListener('resize', rebuild);
+  document.fonts?.ready.then(() => fields.forEach(build));
+  fields.forEach(build);
+  requestAnimationFrame(frame);
+
+  // copy email
+  const btn = document.getElementById('copy'), mail = document.getElementById('email');
+  btn.addEventListener('click', () => {
+    const done = () => { btn.textContent = 'Copied'; setTimeout(() => btn.textContent = 'Copy', 1600); };
+    const fallback = () => { const s = getSelection(), rg = document.createRange(); rg.selectNodeContents(mail); s.removeAllRanges(); s.addRange(rg); btn.textContent = 'Press ⌘C'; };
+    try { navigator.clipboard.writeText(mail.textContent).then(done, fallback); } catch { fallback(); }
+  });
+})();
+</script>
+</body>
+</html>
