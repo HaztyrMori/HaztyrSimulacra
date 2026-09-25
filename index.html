@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Tong Ye Zhang — game designer, technical artist and player researcher.">
+<meta name="description" content="Tong Ye Zhang — technical artist and game designer.">
 <meta property="og:title" content="Tong Ye Zhang">
-<meta property="og:description" content="Game designer, technical artist and player researcher.">
+<meta property="og:description" content="Technical artist and game designer.">
 <title>Tong Ye Zhang Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,24 +19,25 @@
     --display:"Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
     --body:"Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
     --mono:"JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
-    --grain:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .06 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    --grain:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .035 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
     color-scheme: light;
   }
   *{box-sizing:border-box}
   html,body{background:var(--paper);color:var(--ink)}
   body{font-family:var(--body);font-size:16px;line-height:1.6;margin:0}
 
-  .layout{display:grid;grid-template-columns:minmax(110px,1fr) minmax(0,760px) minmax(110px,1fr);min-height:100dvh}
+  .layout{display:grid;grid-template-columns:minmax(110px,1fr) minmax(0,min(1320px,68vw)) minmax(110px,1fr);min-height:100dvh}
 
   /* ---------- eye panels ---------- */
   .eyes{position:sticky;top:0;height:100dvh;overflow:hidden;background:var(--ink);cursor:crosshair}
   .eyes canvas{display:block;width:100%;height:100%}
+  .tag{z-index:1}
   .tag{position:absolute;left:16px;bottom:16px;background:var(--paper);color:var(--ink);border:var(--rule);
-       font:600 11px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;padding:8px 10px;box-shadow:4px 4px 0 var(--paper);pointer-events:none}
+       font:600 11px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;padding:8px 10px;box-shadow:4px 4px 0 var(--paper);pointer-events:none;white-space:nowrap}
 
   /* ---------- centre column ---------- */
   main,nav,.slot-label,.links a{background-image:var(--grain)}
-  main{background-color:#fbfaf8;border-inline:var(--rule);padding-inline:clamp(20px,5vw,56px);padding-block:0 64px;min-width:0}
+  main{container-type:inline-size;background-color:#fbfaf8;border-inline:var(--rule);padding-inline:clamp(20px,5vw,56px);padding-block:0 64px;min-width:0}
 
   nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background-color:#fbfaf8;border-bottom:var(--rule);
       display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-block:14px;
@@ -102,7 +103,7 @@
   .rows .when{font:400 12px/1.7 var(--mono);letter-spacing:.06em;font-variant-numeric:tabular-nums}
   .rows strong{display:block;font-weight:700}
   .rows em{font-style:normal;color:var(--grey);display:block;font-size:15px}
-  .sub{font:600 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;margin:28px 0 4px}
+  .sub{font:600 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;margin:32px 0 12px}
 
   .skills{display:grid;gap:14px}
   .skills div{display:grid;grid-template-columns:150px minmax(0,1fr);gap:16px}
@@ -133,127 +134,274 @@
     .record{grid-template-columns:repeat(2,minmax(0,1fr))}
     .rows li,.skills div{grid-template-columns:minmax(0,1fr);gap:2px}
   }
+  /* ---------- tech art ---------- */
+  .start{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline;border:var(--rule);box-shadow:6px 6px 0 var(--ink);
+         padding:14px 16px;margin-bottom:32px;color:var(--ink);text-decoration:none;max-width:60ch;background-color:var(--paper)}
+  .start:hover{background-color:var(--ink);color:var(--paper)}
+  .start-k{font:600 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}
+  .ta-list{display:grid;gap:56px}
+  .ta{display:flex;flex-direction:column;gap:14px}
+  .spec{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px}
+  .spec > span:first-child{background:var(--ink);color:var(--paper);font:600 12px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;padding:7px 9px}
+  .process{display:grid;gap:0;margin:0}
+  .process div{display:grid;grid-template-columns:110px minmax(0,1fr);gap:14px;border-top:1.5px solid var(--ink);padding-block:9px}
+  .process dt{font:600 11px/1.9 var(--mono);letter-spacing:.1em;text-transform:uppercase}
+  .process dd{margin:0}
+  .todo{color:var(--grey)}
+  .case-open{all:unset;cursor:pointer;font:inherit;text-transform:inherit}
+  .case-open:hover{text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:6px}
+  .case-open:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+  .case-btn{align-self:flex-start;background:var(--paper);color:var(--ink);box-shadow:4px 4px 0 var(--ink)}
+  .case-btn:hover{background:var(--ink);color:var(--paper)}
+  .step-chip{position:absolute;right:10px;top:10px;background:var(--ink);color:var(--paper);font:600 10px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;padding:6px 8px;z-index:2;transition:opacity .3s}
+  .process div{transition:background .3s}
+  .process div.active dt{background:var(--ink);color:var(--paper);padding-inline:6px;margin-inline:-6px}
+  .process dt{transition:background .3s,color .3s;align-self:start;justify-self:start;line-height:1.9}
+  .slot.mock.develop{animation:mockdev .6s steps(6) both}
+  @keyframes mockdev{0%{filter:blur(8px) contrast(4) grayscale(1);opacity:.3}100%{filter:none;opacity:1}}
+  /* case study overlay */
+  .case{position:fixed;inset:0;z-index:900;background:var(--paper);background-image:var(--grain);overflow:hidden;overscroll-behavior:contain;
+        transform-origin:0 0;will-change:transform;transition:transform .56s cubic-bezier(.7,0,.2,1);backface-visibility:hidden}
+  .case.settled{overflow:auto}
+  .case-bar{position:sticky;top:0;z-index:2;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;
+            padding:12px clamp(16px,4vw,48px);background:var(--paper);border-bottom:var(--rule)}
+  .case-body{max-width:1100px;margin:0 auto;padding:clamp(24px,4vw,48px) clamp(16px,4vw,48px) 80px;display:grid;gap:36px}
+  .case-body h2{font-size:clamp(44px,7vw,88px)}
+  .case-body .slot{box-shadow:8px 8px 0 var(--ink)}
+  .case-grid{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:40px;align-items:start}
+  .case-facts{border:var(--rule);padding:16px;display:grid;gap:12px;position:sticky;top:90px}
+  .case-facts dt{font:600 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px}
+  .case-facts dd{margin:0}
+  .case-log{list-style:none;margin:0;padding:0;border-top:var(--rule)}
+  .case-log li{display:grid;grid-template-columns:110px minmax(0,1fr);gap:14px;padding-block:12px;border-bottom:1.5px solid var(--ink)}
+  .case-log time{font:600 12px/1.6 var(--mono)}
+  .case-next{justify-self:start}
+  @media (max-width:760px){.case-grid{grid-template-columns:minmax(0,1fr)}.case-facts{position:static}}
+  html.lenis,html.lenis body{height:auto}
+  .lenis.lenis-smooth{scroll-behavior:auto!important}
+  .lenis.lenis-stopped{overflow:hidden}
+  .fx-overlay{position:fixed;inset:0;width:100vw;height:100vh;z-index:1000;display:none;pointer-events:none}
+  .fx-overlay.intro{pointer-events:auto;cursor:pointer}
+  .fx-skip{position:fixed;right:20px;bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:1001;background:var(--paper);color:var(--ink);box-shadow:4px 4px 0 var(--ink)}
+  body.intro-running{overflow:hidden}
+  .hero > *{transition:opacity .8s ease, transform .8s cubic-bezier(.2,.8,.2,1)}
+  body.intro-running .hero > *{opacity:0;transform:translateY(24px)}
+  body.intro-done .hero > :nth-child(2){transition-delay:.08s} body.intro-done .hero > :nth-child(3){transition-delay:.16s}
+  body.intro-done .hero > :nth-child(4){transition-delay:.24s} body.intro-done .hero > :nth-child(5){transition-delay:.32s}
+  .mine{display:flex;gap:10px;align-items:baseline;border-left:3px solid var(--ink);padding-left:10px}
+  .mine b{font:600 11px/1.6 var(--mono);letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
+  .play{align-self:flex-start;font:600 12px/1 var(--mono);letter-spacing:.06em;color:var(--ink);text-decoration:none;border:var(--rule);padding:10px 12px;box-shadow:4px 4px 0 var(--ink)}
+  .play:hover{background:var(--ink);color:var(--paper)}
+  .slot.art{padding:0;background-image:none;overflow:hidden;display:block}
+  .slot.art canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+  .art-tag{position:absolute;left:10px;bottom:10px;background:var(--paper);border:2px solid var(--ink);font:600 10px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;padding:5px 7px}
+  .slot.mock{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);background:var(--paper)}
+  .mock-view{display:grid;place-items:center;padding:14px;border-right:2px solid var(--ink);background-image:radial-gradient(circle,rgba(0,0,0,.25) 1px,transparent 1.3px);background-size:12px 12px}
+  .mock-view svg{width:100%;height:auto;max-height:100%}
+  .mock-panel{display:flex;flex-direction:column;font:400 11px/1.3 var(--mono);min-width:0}
+  .mock-head{display:flex;justify-content:space-between;align-items:center;padding:8px 10px;border-bottom:2px solid var(--ink)}
+  .mock-head span{background:var(--ink);color:var(--paper);padding:4px 8px;font-weight:600}
+  .mock-panel ul{list-style:none;margin:0;padding:0;flex:1;overflow:hidden}
+  .mock-panel li{display:grid;grid-template-columns:14px minmax(0,1fr) auto;gap:6px;align-items:center;padding:6px 10px;border-bottom:1px solid var(--ink)}
+  .mock-panel li em{display:block;font-style:normal;color:var(--grey);font-size:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .mock-panel .x{font-weight:600}
+  .mock-panel button{font:600 10px/1 var(--mono);padding:4px 6px;box-shadow:none;border-width:1.5px;letter-spacing:.04em;pointer-events:none}
+  .mock-foot{padding:6px 10px;border-top:2px solid var(--ink);font-weight:600}
+  .status{font:600 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;border:1.5px dashed var(--ink);padding:5px 7px}
+  .side-note{border:2px dashed var(--ink);padding:18px;display:flex;flex-direction:column;gap:8px}
+  .side-note h3{font-size:28px}
+  h4{font:800 26px/1 var(--display);text-transform:uppercase;margin:0}
+  .papers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;margin-bottom:8px}
+  .papers article{display:flex;flex-direction:column;gap:8px}
+  #background .record{margin-bottom:8px}
+  #background .stat b{font-size:clamp(28px,4vw,38px)}
+  @media (max-width:560px){ .papers{grid-template-columns:minmax(0,1fr)} .process div{grid-template-columns:minmax(0,1fr);gap:2px} }
+  @container (min-width: 880px){
+    .ta{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);column-gap:36px;row-gap:12px;align-items:start}
+    .ta > .slot{grid-column:1;grid-row:1 / span 6;position:sticky;top:84px;align-self:start}
+    .ta > :not(.slot){grid-column:2}
+    .record{grid-template-columns:repeat(6,minmax(0,1fr))}
+    .lede{max-width:52ch}
+  }
+  @container (min-width: 920px){
+    .hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);column-gap:40px;align-items:start}
+    .hero > :not(.slot){grid-column:1}
+    .hero > .slot{grid-column:2;grid-row:1 / span 4;align-self:center}
+    .hero h1{font-size:clamp(64px,8.6cqi,132px)}
+    .hero .start{margin-bottom:0}
+  }
 </style>
 </head>
 <body>
 
+
 <div class="layout">
   <aside class="eyes left" aria-label="Decorative field of sketched eyes that follow your pointer">
     <canvas></canvas>
-    <span class="tag">Click · they blink</span>
+    <span class="tag">Hover · click to blink</span>
   </aside>
 
   <main>
     <nav aria-label="Sections">
       <a class="mark" href="#top">TYZ</a>
       <ul>
-        <li><a href="#work">Work</a></li>
-        <li><a href="#research">Research</a></li>
-        <li><a href="#player">Player</a></li>
-        <li><a href="#about">About</a></li>
+        <li><a href="#techart">Tech Art</a></li>
+        <li><a href="#games">Games</a></li>
+        <li><a href="#background">Background</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
 
     <header class="hero" id="top">
       <h1>Tong Ye<br>Zhang</h1>
-      <p class="roles"><span>Game Designer</span><span>Technical Artist</span><span>Player Researcher</span></p>
-      <p class="lede">I design games and study the people who play them. Twenty thousand hours as a player, a thesis on how games and players negotiate difficulty, and a day job shipping UX across five government applications at once.</p>
-      <div class="slot r169">
-        <span class="slot-label">Showreel<small>放 30–60 秒技術美術／遊戲片段 · 16:9 · 先上傳到 YouTube 或 Vimeo</small></span>
-      </div>
+      <p class="roles"><span>Technical Artist</span><span>Game Designer</span><span>UX</span></p>
+      <p class="lede">I come to technical art from UX and game design. I treat artists as the users of what I build: talk to them first, build the smallest thing that helps, then watch them use it.</p>
+      <a class="start" href="#techart"><span class="start-k">Start here</span><span>Tech Art below. Each project shows the problem, who it was for, what I built, where I got stuck and what changed.</span></a>
+      <div class="slot r169 art" data-art="hero"><canvas aria-label="Dithered 3D test scene: an eyeball that follows your cursor, lit by a moving light"></canvas><span class="art-tag">Test scene · reel after build 3</span></div>
     </header>
 
-    <section id="work">
-      <div class="sec-head"><h2>Work</h2><span class="count">4 projects · 2 slots open</span></div>
-      <div class="work">
-        <article class="card wide">
-          <div class="slot r169"><span class="slot-label">Decypress gameplay<small>放實機影片或 3–4 張關卡截圖</small></span></div>
-          <p class="meta">2021 · Narrative-action souls-like · Demo</p>
-          <h3>Decypress</h3>
-          <p class="desc">A dark-fantasy souls-like across four levels. I wrote the story, character backstories, dialogue and lore, composed the full soundtrack, and designed the collectibles, progression triggers and environmental storytelling that reward exploration.</p>
-          <ul class="chips"><li>Story &amp; lore</li><li>Dialogue</li><li>Original score</li><li>Progression</li><li>Environmental storytelling</li></ul>
+    <section id="techart">
+      <div class="sec-head"><h2>Tech Art</h2><span class="count">3 builds · Sep 27 – Oct 5</span></div>
+      <div class="ta-list">
+
+        <article class="ta">
+          <div class="slot r169 art mock" aria-label="Interface mockup of the export checker panel">
+            <div class="mock-view">
+              <svg viewBox="0 0 200 150" aria-hidden="true"><g fill="none" stroke="#1a1a1a" stroke-width="1.4">
+                <path d="M20 120 L100 140 L180 120"/><path d="M20 120 L100 100 L180 120" stroke-dasharray="3 3"/>
+                <path d="M40 70 l30 -12 30 12 -30 12z M40 70 v34 l30 12 v-34 M100 70 v34 l-30 12"/>
+                <path d="M130 60 l12 -30 12 30 z M142 30 v70" /><circle cx="142" cy="92" r="14"/>
+                <path d="M56 40 h36 v-14" stroke-dasharray="2 2"/></g>
+                <g font-family="JetBrains Mono, monospace" font-size="7" fill="#1a1a1a"><text x="36" y="36">scale 1.37</text><text x="118" y="20">rock.002</text></g></svg>
+            </div>
+            <div class="mock-panel">
+              <div class="mock-head"><b>Export check</b><span>Scan</span></div>
+              <ul>
+                <li><span class="x">×</span><span>Crate_01<em>Scale not applied</em></span><button type="button" tabindex="-1">Fix</button></li>
+                <li><span class="x">×</span><span>rock.002<em>Name breaks SM_ convention</em></span><button type="button" tabindex="-1">Rename</button></li>
+                <li><span class="x">!</span><span>Tree_A<em>214 n-gons</em></span><button type="button" tabindex="-1">Select</button></li>
+                <li><span class="x">!</span><span>T_Bark<em>1000×1000, not power of two</em></span><button type="button" tabindex="-1">Show</button></li>
+              </ul>
+              <div class="mock-foot">4 issues · 2 fixable</div>
+            </div>
+            <span class="art-tag">UI mockup · real tool Sep 29</span>
+          </div>
+          <p class="spec"><span>Pipeline &amp; Tools</span><span class="meta">Python · Blender add-on</span><span class="status">In progress · build 1 of 3</span></p>
+          <h3><button type="button" class="case-open" data-case="0">Export checker for Blender</button></h3>
+          <dl class="process">
+            <div><dt>Problem</dt><dd>Small mistakes slip through at export: unapplied scale, missing UVs, n-gons, off-convention names, textures that aren't power-of-two. Each one costs a round trip with the engine team.</dd></div>
+            <div><dt>Built for</dt><dd>A 3D artist handing assets to an engine. I'm interviewing an artist first and testing the tool with them after.</dd></div>
+            <div><dt>Approach</dt><dd>A side-panel add-on: one button scans the scene, lists every problem by object, and offers a one-click fix where the fix is safe. Rules live in one editable file so a team can set its own conventions.</dd></div>
+            <div><dt>Stuck on</dt><dd class="todo">Build log starts Sep 27.</dd></div>
+            <div><dt>Result</dt><dd class="todo">Target: a working add-on on GitHub, a 20-second demo GIF and the artist's feedback.</dd></div>
+          </dl>
+          <button type="button" class="case-btn">Open case study →</button>
         </article>
 
+        <article class="ta">
+          <div class="slot r169 art" data-art="dither"><canvas aria-label="The same test scene shaded, then dithered with a Bayer pattern and with noise"></canvas><span class="art-tag">Concept preview · live demo Oct 2</span></div>
+          <p class="spec"><span>Rendering &amp; Visuals</span><span class="meta">WebGL · GLSL · three.js</span><span class="status">Up next · build 2 of 3</span></p>
+          <h3><button type="button" class="case-open" data-case="1">1-bit dither post-process</button></h3>
+          <dl class="process">
+            <div><dt>Problem</dt><dd>Turn a lit 3D scene into two-colour ink, in the spirit of 1-bit games, without the dot pattern crawling across surfaces every time the camera moves.</dd></div>
+            <div><dt>Built for</dt><dd>An art director tuning the look. They get sliders for threshold, pattern scale and edge lines instead of having to touch shader code.</dd></div>
+            <div><dt>Approach</dt><dd>Render the scene, then a full-screen pass that compares brightness against a threshold pattern. I'll compare ordered (Bayer) and blue-noise patterns, then test ways to keep the pattern stable under camera motion.</dd></div>
+            <div><dt>Stuck on</dt><dd class="todo">Build log starts Sep 30.</dd></div>
+            <div><dt>Result</dt><dd class="todo">Target: a live demo embedded on this page, with side-by-side comparisons and frame timings.</dd></div>
+          </dl>
+          <button type="button" class="case-btn">Open case study →</button>
+        </article>
+
+        <article class="ta">
+          <div class="slot r169 art" data-art="scatter"><canvas aria-label="Top-down map: contour lines, a winding path and plants placed by slope, height and distance rules"></canvas><span class="art-tag">Concept diagram · build Oct 5</span></div>
+          <p class="spec"><span>Environment &amp; World</span><span class="meta">Blender · Geometry Nodes</span><span class="status">Planned · build 3 of 3</span></p>
+          <h3><button type="button" class="case-open" data-case="2">Rule-based vegetation scatter</button></h3>
+          <dl class="process">
+            <div><dt>Problem</dt><dd>Placing plants by hand is slow and looks placed: even spacing, grass on cliffs, trees in the middle of paths.</dd></div>
+            <div><dt>Built for</dt><dd>An environment artist who wants control through a handful of plain-language inputs, not a node graph.</dd></div>
+            <div><dt>Approach</dt><dd>A node group that scatters by rules: density falls off with slope and height, nothing grows within a set distance of a path curve, and larger plants push smaller ones away. Only the inputs an artist needs are exposed.</dd></div>
+            <div><dt>Stuck on</dt><dd class="todo">Build log starts Oct 3.</dd></div>
+            <div><dt>Result</dt><dd class="todo">Target: before/after renders, a clip of the sliders in use and the node group on GitHub.</dd></div>
+          </dl>
+          <button type="button" class="case-btn">Open case study →</button>
+        </article>
+
+        <aside class="side-note">
+          <p class="meta">Also on this page</p>
+          <h3>The eye field</h3>
+          <p>The side panels are a real-time canvas: a houndstooth drawn pixel by pixel with screen-print noise, and about 160 sketched eyes that track the cursor and blink in waves when clicked. Built with AI assistance. I set the rules, art-directed the look and tuned it by hand.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section id="games">
+      <div class="sec-head"><h2>Game Design</h2><span class="count">2 projects</span></div>
+      <div class="work">
         <article class="card">
-          <div class="slot r43"><span class="slot-label">Board game photo<small>放桌面實拍、卡牌或規則書</small></span></div>
+          <div class="slot r43 art" data-art="decypress"><canvas aria-label="Illustration: a knight on a hill under a large moon between cypress trees"></canvas><span class="art-tag">Illustration · screenshots on itch.io</span></div>
+          <p class="meta">2021 · Souls-like narrative demo · Unity · Windows</p>
+          <h3>Decypress</h3>
+          <p class="desc">A short souls-like narrative experience across four levels, built in Unity as a university project with Scott Warren (Sayincraft Studios), who led programming and visuals.</p>
+          <p class="mine"><b>My part</b>Story, lore and dialogue, character backstories, the full original soundtrack, and the design of collectibles, progression triggers and environmental storytelling.</p>
+          <a class="play" href="https://sayincraft.itch.io/decypress" target="_blank" rel="noopener">Play on itch.io ↗</a>
+        </article>
+        <article class="card">
+          <div class="slot r43 art" data-art="board"><canvas aria-label="Illustration: a descending chain of dungeon room tiles, three cards and two dice"></canvas><span class="art-tag">Illustration · photos coming</span></div>
           <p class="meta">2023 · Co-op board game · Print-and-play</p>
           <h3>Dive Down the Dungeon Deep</h3>
-          <p class="desc">Core mechanic, turn structure, economy and numerical balance, designed from scratch. Three rounds of UX research (focus groups, blind playtests, longitudinal surveys, 120+ responses) reshaped turn length, economy and flow.</p>
-          <ul class="chips"><li>Core mechanic</li><li>Economy &amp; balance</li><li>Playtesting</li></ul>
-        </article>
-
-        <article class="card pending">
-          <div class="slot r43"><span class="slot-label">Tech art 01<small>放 Shader／VFX：改前改後對比 GIF 或拆解影片</small></span></div>
-          <p class="meta">Year · Engine · Tool</p>
-          <h3>Shader or VFX breakdown</h3>
-          <p class="desc">待填：這個效果要解決什麼問題、怎麼做、效能如何。</p>
-          <ul class="chips"><li class="empty">Empty slot</li></ul>
-        </article>
-
-        <article class="card pending wide">
-          <div class="slot r32"><span class="slot-label">Tech art 02<small>放工具／Pipeline 作品：介面截圖 + 使用前後流程對比</small></span></div>
-          <p class="meta">Year · Engine · Tool</p>
-          <h3>Tool or pipeline</h3>
-          <p class="desc">待填：這個工具幫美術或策劃省了什麼時間。</p>
-          <ul class="chips"><li class="empty">Empty slot</li></ul>
+          <p class="desc">Core mechanic, economy and balance from scratch, then three rounds of playtesting (120+ survey responses) that reshaped turn length and flow.</p>
         </article>
       </div>
     </section>
 
-    <section id="research">
-      <div class="sec-head"><h2>Research</h2><span class="count">2 papers</span></div>
-      <div class="research">
-        <article class="paper">
-          <div class="slot r43"><span class="slot-label">Framework diagram<small>放 Negotiated Difficulty Framework 圖</small></span></div>
-          <div class="txt">
-            <p class="meta">2025 – present · Master's thesis, U of T</p>
-            <h3>Here Be Lions</h3>
-            <p>Reframing challenge design and difficulty adjustment as a negotiation between game and player. The result is the Negotiated Difficulty Framework for dynamic difficulty and retention design.</p>
-            <p class="figures"><span>8 dev interviews</span><span>590+ Reddit comments</span><span>35 games</span></p>
-          </div>
+    <section id="background">
+      <div class="sec-head"><h2>Background</h2><span class="count">EN · 粵 · 普 · 日</span></div>
+
+      <p class="sub">Research</p>
+      <div class="papers">
+        <article>
+          <p class="meta">2025 – present · Master's thesis, U of T</p>
+          <h4>Here Be Lions</h4>
+          <p>Difficulty adjustment reframed as a negotiation between game and player: the Negotiated Difficulty Framework.</p>
+          <p class="figures"><span>8 dev interviews</span><span>590+ comments</span><span>35 games</span></p>
         </article>
-        <article class="paper">
-          <div class="slot r43"><span class="slot-label">Field study<small>放現場照片或數據圖</small></span></div>
-          <div class="txt">
-            <p class="meta">2023 · Peer-reviewed · CGSA</p>
-            <h3>Captive Audience</h3>
-            <p>A study of time and player experience in online and paper Magic: The Gathering. Competitiveness emerged as a key modulator of flow state and retention.</p>
-            <p class="figures"><span>42 players</span><span>200+ games</span><span>5 locations</span></p>
-          </div>
+        <article>
+          <p class="meta">2023 · Peer-reviewed · CGSA</p>
+          <h4>Captive Audience</h4>
+          <p>Time and player experience in online and paper Magic: The Gathering. Competitiveness modulates flow.</p>
+          <p class="figures"><span>42 players</span><span>200+ games</span><span>5 locations</span></p>
         </article>
       </div>
-    </section>
 
-    <section id="player">
-      <div class="sec-head"><h2>Player record</h2><span class="count">20,000+ hours</span></div>
+      <p class="sub">Player record · 20,000+ hours</p>
       <div class="record">
-        <div class="stat"><span class="meta">Souls series</span><b>100%</b><span>Achievements, 2,500+ hours</span></div>
-        <div class="stat"><span class="meta">GG Strive · SF6</span><b>#142</b><span>Peak global rank</span></div>
-        <div class="stat"><span class="meta">Hearthstone</span><b>Legend</b><span>Multiple seasons</span></div>
-        <div class="stat"><span class="meta">MTG GP Vancouver</span><b>Day 2</b><span>Top 15%, plus RCQ wins</span></div>
-        <div class="stat"><span class="meta">PoE · Diablo · Last Epoch</span><b>3,000+</b><span>Hours of ARPG theorycrafting</span></div>
+        <div class="stat"><span class="meta">Souls series</span><b>100%</b><span>Achievements</span></div>
+        <div class="stat"><span class="meta">GG Strive · SF6</span><b>#142</b><span>Peak global</span></div>
+        <div class="stat"><span class="meta">Hearthstone</span><b>Legend</b><span>Multi-season</span></div>
+        <div class="stat"><span class="meta">MTG GP Vancouver</span><b>Day 2</b><span>Top 15%</span></div>
+        <div class="stat"><span class="meta">PoE · Diablo · LE</span><b>3,000+</b><span>Hours</span></div>
         <div class="stat"><span class="meta">MTG Arena</span><b>Mythic</b><span>Ranked</span></div>
       </div>
-    </section>
 
-    <section id="about">
-      <div class="sec-head"><h2>About</h2><span class="count">EN · 粵 · 普 · 日</span></div>
+      <p class="sub">Experience</p>
       <ul class="rows">
-        <li><span class="when">Jul 2026 – now</span><div><strong>UX/UI Engineer</strong><em>China Telecom Global · five concurrent government applications, AI-assisted prototyping for React and Flutter</em></div></li>
+        <li><span class="when">Jul 2026 – now</span><div><strong>UX/UI Engineer</strong><em>China Telecom Global · five concurrent government apps, AI-assisted HTML prototypes handed to React and Flutter developers</em></div></li>
         <li><span class="when">2018 – 2025</span><div><strong>Localization &amp; Creative Direction Associate</strong><em>Oak Smart Advertising Media · trilingual campaigns, part-time</em></div></li>
-        <li><span class="when">2023 – 2024</span><div><strong>Teaching Assistant</strong><em>University of Toronto · game design tutorials, playtesting and UX research mentoring</em></div></li>
+        <li><span class="when">2023 – 2024</span><div><strong>Teaching Assistant</strong><em>University of Toronto · game design tutorials, playtesting and UX research for 12 teams</em></div></li>
       </ul>
+
       <p class="sub">Education</p>
       <ul class="rows">
         <li><span class="when">2025</span><div><strong>Master of Information</strong><em>University of Toronto · Culture &amp; Technology, UX Design, thesis pathway</em></div></li>
         <li><span class="when">2023</span><div><strong>Bachelor of Arts</strong><em>University of Toronto Mississauga · CCIT, joint with Sheridan College</em></div></li>
       </ul>
+
       <p class="sub">Toolkit</p>
       <dl class="skills">
-        <div><dt>Game design</dt><dd>Core mechanics, narrative design, prototyping, playtesting and iteration</dd></div>
-        <div><dt>Tools</dt><dd>Unity · Figma · Python · 待補：技術美術工具</dd></div>
-        <div><dt>AI</dt><dd>Agentic skill development, MCP integration, multi-agent workflows</dd></div>
+        <div><dt>Engines &amp; DCC</dt><dd>Unity · Blender (learning: Python API, Geometry Nodes)</dd></div>
+        <div><dt>Scripting</dt><dd>Python · GLSL (learning) · scripts on GitHub</dd></div>
+        <div><dt>Design</dt><dd>Figma · FigJam · playtesting · UX research</dd></div>
+        <div><dt>Automation</dt><dd>AI agent workflows, MCP tool integration, custom pipelines</dd></div>
       </dl>
     </section>
 
@@ -262,9 +410,10 @@
       <div class="contact">
         <div class="mail"><code id="email">haztyr42@gmail.com</code><button type="button" id="copy">Copy</button></div>
         <div class="links">
+          <a href="https://github.com/HaztyrMori" target="_blank" rel="noopener">GitHub ↗</a>
           <a href="https://www.linkedin.com/in/tong-ye-zhang" target="_blank" rel="noopener">LinkedIn ↗</a>
-          <a class="todo" href="#contact">Résumé PDF（待放）</a>
-          <a class="todo" href="#contact">ArtStation（待放）</a>
+          <a class="todo" href="#contact">Résumé PDF (soon)</a>
+          <a class="todo" href="#contact">ArtStation (soon)</a>
         </div>
       </div>
       <footer><span>© 2026 Tong Ye Zhang</span><span>Eyes drawn live in canvas</span></footer>
@@ -274,6 +423,7 @@
   <aside class="eyes right" aria-hidden="true"><canvas></canvas></aside>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.11/dist/lenis.min.js"></script>
 <script>
 (() => {
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -303,7 +453,7 @@
     const W = r.width, H = r.height;
     f.cv.width = Math.round(W * dpr); f.cv.height = Math.round(H * dpr);
     f.dpr = dpr; f.W = W; f.H = H;
-    const a = W < 500 && H < 260 ? 34 : Math.max(34, Math.min(50, W / 4.2));
+    const a = W < 500 && H < 260 ? 38 : Math.max(42, Math.min(66, W / 3.4));
     const P = a * 2, s = a / 2;
     const ox = ((W % P) / 2), oy = 0;
 
@@ -329,12 +479,12 @@
         if (black) {
           // ink: mostly dense, with dry-brush patches where coverage thins
           const n = vnoise(x0 * 0.045, y * 0.045) * 0.55 + vnoise(x0 * 0.35, y * 0.35) * 0.45;
-          c = 14 + g * 22;
+          c = 38 + g * 18;
           if (n > 0.72) c += Math.min(150, (n - 0.72) * 700) * (0.5 + g);
         } else {
           // paper: soft tooth plus horizontal fibres and the odd speck
           const fibre = vnoise(x0 * 0.9, y * 0.07) > 0.82 ? 16 : 0;
-          c = 252 - g * 14 - fibre;
+          c = 228 - g * 12 - fibre;
           if (g < 0.003) c = 120;
         }
         c = Math.max(0, Math.min(255, c));
@@ -358,43 +508,61 @@
     f.grain = gr;
 
     // eyes sit in the solid body of each tooth: white eye on black, and on white
-    const eyes = [], rand = rng(Math.round(W * 7 + H * 13) || 7);
+    const rand = rng(Math.round(W * 7 + H * 13) || 7);
+    const w = a * 0.9, h = a * 0.52, NV = 6;
+    const variants = { black: [], white: [] };
+    for (const tooth of ['black', 'white']) for (let v = 0; v < NV; v++) {
+      const V = { tooth, w, h,
+        jit: Array.from({ length: 16 }, () => (rand() - 0.5) * 2.4),
+        lash: Array.from({ length: 5 }, () => 0.8 + rand() * 0.5) };
+      V.base = sprite(dpr, w, h, c => eyeBase(c, V, h / 2));
+      V.top = sprite(dpr, w, h, c => eyeTop(c, V, h / 2, 1));
+      variants[tooth].push(V);
+    }
+    f.iris = irisSprite(dpr, h, variants.black[0].jit[11]);
+    const eyes = [];
     for (let j = -1; j * P < H + P; j++) for (let i = -1; i * P < W + P; i++) {
       [[0.5, 0.5, 'black'], [1.5, 1.5, 'white']].forEach(([fx, fy, tooth]) => {
         const x = i * P + fx * a + ox, y = j * P + fy * a + oy;
         if (x < -a || x > W + a || y < -a || y > H + a) return;
-        const jit = Array.from({ length: 16 }, () => (rand() - 0.5) * 2.4);
-        eyes.push({
-          x, y, w: a * 0.9, h: a * 0.52, tooth, jit,
-          lash: Array.from({ length: 5 }, () => 0.8 + rand() * 0.5),
-          px: 0, py: 0, lag: 0.07 + rand() * 0.16,
-          blinkAt: performance.now() + 1500 + rand() * 9000
-        });
+        const V = variants[tooth][Math.floor(rand() * NV)];
+        eyes.push({ x, y, w, h, tooth, V, jit: V.jit, lash: V.lash,
+          px: 0, py: 0, lag: 0.12 + rand() * 0.14, open: reduce ? 1 : 0, goal: reduce ? 1 : 0, nextGoal: reduce ? 1 : 0, switchAt: 0,
+          blinkAt: performance.now() + 3000 + rand() * 40000 });
       });
     }
     f.eyes = eyes;
   }
 
+  const ZERO = new Array(16).fill(0);
   function lid(ctx, w, hh, j, k) {
     ctx.moveTo(-w / 2 + j[k], j[k + 1]);
     ctx.quadraticCurveTo(j[k + 2], -hh * 2 + j[k + 3], w / 2 + j[k + 4], j[k + 5]);
     ctx.quadraticCurveTo(j[k + 6], hh * 1.7 + j[k + 7], -w / 2 + j[k], j[k + 1]);
   }
 
-  function drawEye(ctx, e, open, rect) {
-    const { w, h } = e, hh = (h / 2) * open;
-    const line = e.tooth === 'black' ? '#fff' : '#0b0b0b';
-    // pupil follows target
-    const dx = target.x - (rect.left + e.x), dy = target.y - (rect.top + e.y);
-    const dist = Math.hypot(dx, dy) || 1, k = Math.min(1, dist / 240);
-    e.px += (dx / dist * w * 0.25 * k - e.px) * e.lag;
-    e.py += (dy / dist * h * 0.22 * k - e.py) * e.lag;
+  // pre-render the parts of an open eye that never change
+  function sprite(dpr, w, h, draw) {
+    const sw = w * 1.12 + 10, sh = h * 1.55 + 22, ox = sw / 2, oy = h * 0.98 + 8;
+    const c = document.createElement('canvas');
+    c.width = Math.ceil(sw * dpr); c.height = Math.ceil(sh * dpr);
+    const x = c.getContext('2d'); x.scale(dpr, dpr); x.translate(ox, oy);
+    x.lineCap = 'round'; x.lineJoin = 'round';
+    draw(x);
+    return { c, ox, oy, sw, sh };
+  }
+  function irisSprite(dpr, h, rot) {
+    const r = h * 0.44, s = r * 2 + 4, c = document.createElement('canvas');
+    c.width = Math.ceil(s * dpr); c.height = Math.ceil(s * dpr);
+    const x = c.getContext('2d'); x.scale(dpr, dpr); x.translate(s / 2, s / 2);
+    x.lineCap = 'round';
+    eyeIris(x, r, rot);
+    return { c, o: s / 2, s };
+  }
 
-    ctx.save(); ctx.translate(e.x, e.y);
-    ctx.lineCap = 'round'; ctx.lineJoin = 'round';
-
-    // crease + lashes in the tooth's contrast colour
-    if (open > 0.35) {
+  function eyeBase(ctx, e, hh) {
+    const { w, h } = e, line = e.tooth === 'black' ? '#e6e3dc' : '#1c1c1c';
+    if (hh > h * 0.17) {
       ctx.strokeStyle = line; ctx.lineWidth = 1.4;
       ctx.beginPath();
       ctx.moveTo(-w * 0.4, -hh * 0.95 + e.jit[8]);
@@ -405,15 +573,15 @@
     ctx.beginPath();
     for (let n = 0; n < 5; n++) {
       const t = 0.18 + n * 0.16;
-      const bx = (1 - t) * (1 - t) * (-w / 2) + 2 * (1 - t) * t * 0 + t * t * (w / 2);
-      const by = 2 * (1 - t) * t * (-hh * 2);
-      const len = h * 0.32 * e.lash[n];
-      const ang = -Math.PI / 2 + (t - 0.5) * 1.6;
+      const bx = (1 - t) * (1 - t) * (-w / 2) + t * t * (w / 2);
+      const shut = hh < h * 0.08;
+      const by = shut ? 2 * (1 - t) * t * (h * 0.36) : 2 * (1 - t) * t * (-hh * 2);
+      const len = h * (shut ? 0.24 : 0.32) * e.lash[n];
+      const ang = shut ? Math.PI / 2 - (t - 0.5) * 1.6 : -Math.PI / 2 + (t - 0.5) * 1.6;
       ctx.moveTo(bx, by);
       ctx.lineTo(bx + Math.cos(ang) * len, by + Math.sin(ang) * len);
     }
     ctx.stroke();
-    // lower-lid hatching
     ctx.globalAlpha = 0.7; ctx.lineWidth = 1;
     ctx.beginPath();
     for (let n = 0; n < 4; n++) {
@@ -421,49 +589,60 @@
       ctx.moveTo(x0, y0); ctx.lineTo(x0 - 4, y0 + 5);
     }
     ctx.stroke(); ctx.globalAlpha = 1;
+    if (hh > h * 0.03) {
+      ctx.beginPath(); lid(ctx, w, hh, ZERO, 0);
+      ctx.fillStyle = '#f1efe9'; ctx.fill();
+    }
+  }
 
+  function eyeIris(ctx, r, rot) {
+    ctx.strokeStyle = '#0b0b0b';
+    ctx.lineWidth = 1.8; ctx.beginPath(); ctx.arc(0, 0, r, 0, Math.PI * 2); ctx.stroke();
+    ctx.lineWidth = 0.9; ctx.beginPath();
+    for (let n = 0; n < 16; n++) {
+      const t = n / 16 * Math.PI * 2 + rot * 0.1;
+      ctx.moveTo(Math.cos(t) * r * 0.5, Math.sin(t) * r * 0.5);
+      ctx.lineTo(Math.cos(t) * r * 0.94, Math.sin(t) * r * 0.94);
+    }
+    ctx.stroke();
+    ctx.save();
+    ctx.beginPath(); ctx.arc(0, 0, r * 0.95, 0, Math.PI * 2); ctx.clip();
+    ctx.globalAlpha = 0.4; ctx.lineWidth = 0.7; ctx.beginPath();
+    for (let q = -r; q <= r; q += 2.6) { ctx.moveTo(q - r, r); ctx.lineTo(q + r, -r); }
+    for (let q = -r; q <= r; q += 3.4) { ctx.moveTo(q - r, r * 0.8); ctx.lineTo(q + r * 0.3, -r); }
+    ctx.stroke(); ctx.restore();
+    ctx.fillStyle = '#0b0b0b'; ctx.beginPath(); ctx.arc(0, 0, r * 0.46, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.arc(-r * 0.3, -r * 0.34, r * 0.17, 0, Math.PI * 2); ctx.fill();
+  }
+
+  function eyeTop(ctx, e, hh, open) {
+    const { w, h } = e, line = e.tooth === 'black' ? '#e6e3dc' : '#1c1c1c';
     if (open > 0.06) {
-      // eyeball
-      ctx.beginPath(); lid(ctx, w, hh, new Array(16).fill(0), 0);
-      ctx.fillStyle = '#fff'; ctx.fill();
-      ctx.save(); ctx.clip();
-      const r = h * 0.44, ix = e.px, iy = e.py;
-      ctx.strokeStyle = '#0b0b0b';
-      ctx.lineWidth = 1.8; ctx.beginPath(); ctx.arc(ix, iy, r, 0, Math.PI * 2); ctx.stroke();
-      ctx.lineWidth = 0.9; ctx.beginPath();
-      for (let n = 0; n < 16; n++) {
-        const t = n / 16 * Math.PI * 2 + e.jit[11] * 0.1;
-        ctx.moveTo(ix + Math.cos(t) * r * 0.5, iy + Math.sin(t) * r * 0.5);
-        ctx.lineTo(ix + Math.cos(t) * r * 0.94, iy + Math.sin(t) * r * 0.94);
-      }
-      ctx.stroke();
-      // pencil cross-hatch inside the iris
       ctx.save();
-      ctx.beginPath(); ctx.arc(ix, iy, r * 0.95, 0, Math.PI * 2); ctx.clip();
-      ctx.globalAlpha = 0.4; ctx.lineWidth = 0.7; ctx.beginPath();
-      for (let q = -r; q <= r; q += 2.6) {
-        ctx.moveTo(ix + q - r, iy + r); ctx.lineTo(ix + q + r, iy - r);
-      }
-      for (let q = -r; q <= r; q += 3.4) {
-        ctx.moveTo(ix + q - r, iy - r * 0.2 + r); ctx.lineTo(ix + q + r * 0.3, iy - r);
-      }
-      ctx.stroke(); ctx.restore();
-      // hatched shadow under the upper lid
+      ctx.beginPath(); lid(ctx, w, hh, ZERO, 0); ctx.clip();
+      ctx.strokeStyle = '#0b0b0b';
       ctx.globalAlpha = 0.45; ctx.lineWidth = 0.8; ctx.beginPath();
       for (let n = 0; n < 9; n++) {
         const hx = -w * 0.36 + n * w * 0.09, top = -hh * (1 - Math.pow(hx / (w / 2), 2)) * 0.95;
         ctx.moveTo(hx, top); ctx.lineTo(hx + 3, top + h * 0.2);
       }
       ctx.stroke(); ctx.globalAlpha = 1;
-      ctx.fillStyle = '#0b0b0b'; ctx.beginPath(); ctx.arc(ix, iy, r * 0.46, 0, Math.PI * 2); ctx.fill();
-      ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.arc(ix - r * 0.3, iy - r * 0.34, r * 0.17, 0, Math.PI * 2); ctx.fill();
-      // shadow of the upper lid
-      ctx.strokeStyle = '#0b0b0b'; ctx.lineWidth = 2.2;
+      ctx.lineWidth = 2.2;
       ctx.beginPath(); ctx.moveTo(-w / 2, 0); ctx.quadraticCurveTo(0, -hh * 1.75, w / 2, 0); ctx.stroke();
       ctx.restore();
     }
-    // sketchy outline, drawn twice with jitter
-    ctx.strokeStyle = open > 0.06 ? '#0b0b0b' : line;
+    if (open <= 0.06) {
+      // shut: a soft sleeping curve instead of a flat line
+      ctx.strokeStyle = line; ctx.lineWidth = 1.8;
+      ctx.beginPath(); ctx.moveTo(-w / 2 + e.jit[0], e.jit[1]);
+      ctx.quadraticCurveTo(e.jit[2], h * 0.72 + e.jit[3], w / 2 + e.jit[4], e.jit[5]); ctx.stroke();
+      ctx.lineWidth = 0.8; ctx.globalAlpha = 0.5;
+      ctx.beginPath(); ctx.moveTo(-w / 2 - e.jit[0], -e.jit[1]);
+      ctx.quadraticCurveTo(-e.jit[2], h * 0.66, w / 2 - e.jit[4], -e.jit[5]); ctx.stroke();
+      ctx.globalAlpha = 1;
+      return;
+    }
+    ctx.strokeStyle = '#0b0b0b';
     ctx.lineWidth = 1.5;
     ctx.beginPath(); lid(ctx, w, hh, e.jit, 0); ctx.stroke();
     ctx.lineWidth = 1;
@@ -471,40 +650,165 @@
     ctx.globalAlpha = 0.45; ctx.lineWidth = 0.7;
     ctx.beginPath(); lid(ctx, w * 1.03, hh * 1.06, e.jit.map(v => v * 1.6), 0); ctx.stroke();
     ctx.globalAlpha = 1;
+  }
+
+  function drawIrisClipped(ctx, e, hh, iris) {
+    ctx.save(); ctx.translate(e.x, e.y);
+    ctx.beginPath(); lid(ctx, e.w, hh, ZERO, 0); ctx.clip();
+    ctx.drawImage(iris.c, e.px - iris.o, e.py - iris.o, iris.s, iris.s);
     ctx.restore();
   }
 
+  function drawEye(ctx, e, open, iris) {
+    const hh = (e.h / 2) * open;
+    if (open >= 1) {
+      const V = e.V;
+      ctx.drawImage(V.base.c, e.x - V.base.ox, e.y - V.base.oy, V.base.sw, V.base.sh);
+      drawIrisClipped(ctx, e, hh, iris);
+      ctx.drawImage(V.top.c, e.x - V.top.ox, e.y - V.top.oy, V.top.sw, V.top.sh);
+      return;
+    }
+    // mid-blink: draw live, only for the few eyes blinking right now
+    ctx.save(); ctx.translate(e.x, e.y); ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+    eyeBase(ctx, e, hh);
+    ctx.restore();
+    if (open > 0.06) drawIrisClipped(ctx, e, hh, iris);
+    ctx.save(); ctx.translate(e.x, e.y); ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+    eyeTop(ctx, e, hh, open);
+    ctx.restore();
+  }
+
+  let last = performance.now();
+  let awake = false;
+  let pointer = null;
+  let showUntil = 0, stareUntil = 0;   // 'owl' easter egg: everyone wakes and stares at the centre               // the real pointer, as opposed to the idle-wander target
+  const NEAR0 = 90, NEAR1 = 250;    // eyes within NEAR0 px open fully, fading shut by NEAR1
+  // eyes rest closed while you read; open in a wave from the pointer when it enters a panel
+  function schedule(goal, ox, oy, spread, jitter) {
+    const now = performance.now();
+    fields.forEach(g => {
+      const r = g.el.getBoundingClientRect();
+      g.eyes.forEach(e => {
+        e.nextGoal = goal; e.closeAt = 0;
+        e.switchAt = now + Math.hypot(r.left + e.x - ox, r.top + e.y - oy) * spread + Math.random() * jitter;
+      });
+      g.settled = false;
+    });
+  }
+
+  // while you read, a small cluster of eyes sometimes cracks open to peek at the pointer
+  let nextPeek = performance.now() + 7000;
+  function peek(now) {
+    const vis = fields.filter(f => { const r = f.el.getBoundingClientRect(); return f.eyes.length && r.bottom > 0 && r.top < innerHeight && r.width > 0; });
+    if (!vis.length) return;
+    const f = vis[Math.floor(Math.random() * vis.length)];
+    const inView = f.eyes.filter(e => e.x > 0 && e.x < f.W && e.y > 20 && e.y < f.H - 20);
+    if (!inView.length) return;
+    const c = inView[Math.floor(Math.random() * inView.length)];
+    const R = c.w * (1.5 + Math.random() * 0.6), stay = 1800 + Math.random() * 1800;
+    f.eyes.forEach(e => {
+      const d = Math.hypot(e.x - c.x, e.y - c.y);
+      if (d > R) return;
+      const delay = d * 4 + Math.random() * 120;
+      e.nextGoal = 0.72; e.switchAt = now + delay;
+      e.closeAt = now + delay + stay + Math.random() * 400;
+      e.px = e.py = 0;
+    });
+    f.settled = false;
+  }
+
   function frame(now) {
+    const dt = Math.min(64, now - last); last = now;
+    if (now < stareUntil) target = { x: innerWidth / 2, y: innerHeight / 2 };
+    if (!awake && !reduce && now > nextPeek) { peek(now); nextPeek = now + 5000 + Math.random() * 9000; }
     if (!reduce && now - lastMove > 4000) {
       const t = now / 1000;
       target = { x: innerWidth * (0.5 + 0.34 * Math.sin(t * 0.43)), y: innerHeight * (0.5 + 0.3 * Math.sin(t * 0.71 + 1)) };
     }
+    const lidEase = 1 - Math.pow(1 - 0.16, dt / 16.7);
     for (const f of fields) {
       if (!f.eyes.length) continue;
-      const ctx = f.cv.getContext('2d');
       const rect = f.el.getBoundingClientRect();
       if (rect.bottom < 0 || rect.top > innerHeight) continue;
+      const near = pointer && pointer.x > rect.left - NEAR1 && pointer.x < rect.right + NEAR1;
+      if (f.settled && !awake && !reduce && !near && now > showUntil) continue;   // asleep, pointer far away, already drawn
+      const ctx = f.cv.getContext('2d');
       ctx.setTransform(1, 0, 0, 1, 0, 0);
       ctx.drawImage(f.bg, 0, 0);
       ctx.setTransform(f.dpr, 0, 0, f.dpr, 0, 0);
+      let moving = false;
       for (const e of f.eyes) {
-        let open = 1;
-        if (!reduce) {
-          const bt = now - e.blinkAt;
-          if (bt > 0 && bt < 200) open = Math.abs(Math.cos(bt / 200 * Math.PI));
-          else if (bt >= 200) e.blinkAt = now + 2500 + Math.random() * 9000;
+        if (e.closeAt && now >= e.closeAt) { e.closeAt = 0; if (!awake) { e.nextGoal = 0; e.switchAt = now; } }
+        if (e.closeAt) moving = true;
+        if (now >= e.switchAt) e.goal = e.nextGoal;
+        // pointer near the edge: the eyes closest to it open, the rest stay sleepy
+        let prox = 0;
+        if (!awake && !reduce && pointer) {
+          const d = Math.hypot(rect.left + e.x - pointer.x, rect.top + e.y - pointer.y);
+          prox = d < NEAR0 ? 1 : d < NEAR1 ? 1 - (d - NEAR0) / (NEAR1 - NEAR0) : 0;
+          prox = prox * prox * (3 - 2 * prox);
+          if (prox > 0) moving = true;
         }
-        drawEye(ctx, e, open, rect);
+        const g = Math.max(e.goal, prox);
+        e.open += (g - e.open) * lidEase;
+        if (Math.abs(g - e.open) < 0.01) e.open = g; else moving = true;
+        if (e.nextGoal !== e.goal) moving = true;
+        // gaze: wide travel, frame-rate independent easing
+        const dx = target.x - (rect.left + e.x), dy = target.y - (rect.top + e.y);
+        const dist = Math.hypot(dx, dy) || 1, k = Math.min(1, dist / 160);
+        const ease = 1 - Math.pow(1 - e.lag, dt / 16.7);
+        e.px += (dx / dist * e.w * 0.34 * k - e.px) * ease;
+        e.py += (dy / dist * e.h * 0.3 * k - e.py) * ease;
+        let blink = 1;
+        if (!reduce && g >= 1) {
+          const bt = now - e.blinkAt;
+          if (bt > 0 && bt < 220) { blink = Math.abs(Math.cos(bt / 220 * Math.PI)); moving = true; }
+          else if (bt >= 220) e.blinkAt = now + 15000 + Math.random() * 35000;
+        }
+        drawEye(ctx, e, e.open * blink, f.iris);
       }
       ctx.setTransform(1, 0, 0, 1, 0, 0);
       ctx.drawImage(f.grain, 0, 0);
+      f.settled = !moving;
     }
     requestAnimationFrame(frame);
   }
 
-  function move(x, y) { target = { x, y }; lastMove = performance.now(); }
+  function move(x, y) { target = { x, y }; pointer = { x, y }; lastMove = performance.now(); }
+  document.addEventListener('mouseout', e => { if (!e.relatedTarget) pointer = null; });
   addEventListener('pointermove', e => move(e.clientX, e.clientY), { passive: true });
   addEventListener('pointerdown', e => move(e.clientX, e.clientY), { passive: true });
+
+  // panels rest under a pale veil with eyes shut while you read; they wake when the pointer enters
+  fields.forEach(f => {
+    f.el.addEventListener('pointerenter', ev => {
+      awake = true; document.body.classList.add('eyes-awake');
+      if (!reduce) schedule(1, ev.clientX, ev.clientY, 0.9, 80);
+    });
+    f.el.addEventListener('pointerleave', ev => {
+      awake = false; document.body.classList.remove('eyes-awake');
+      if (!reduce) schedule(0, ev.clientX, ev.clientY, 0.5, 500);
+    });
+  });
+
+  // type "owl" anywhere: every eye opens, stares at the middle of the screen, blinks once, sleeps
+  let typed = '';
+  addEventListener('keydown', ev => {
+    if (reduce || ev.metaKey || ev.ctrlKey || ev.altKey || /INPUT|TEXTAREA/.test(ev.target.tagName)) return;
+    typed = (typed + ev.key.toLowerCase()).slice(-3);
+    if (typed !== 'owl') return;
+    typed = '';
+    const now = performance.now(), cx = innerWidth / 2, cy = innerHeight / 2;
+    showUntil = now + 4200; stareUntil = now + 3400;
+    schedule(1, cx, cy, 0.45, 60);
+    fields.forEach(g => { const r = g.el.getBoundingClientRect();
+      g.eyes.forEach(e => { e.blinkAt = now + 2200 + Math.hypot(r.left + e.x - cx, r.top + e.y - cy) * 0.6; }); });
+    setTimeout(() => { if (!awake) schedule(0, cx, cy, 0.35, 500); }, 3400);
+  });
+
+  // leave the tab and the title keeps watching
+  const baseTitle = document.title;
+  document.addEventListener('visibilitychange', () => { document.title = document.hidden ? '(still watching you)' : baseTitle; });
 
   // click a panel: a blink wave spreads out from the click
   fields.forEach(f => f.el.addEventListener('click', ev => {
@@ -519,11 +823,518 @@
   }));
 
   let rt;
-  const rebuild = () => { clearTimeout(rt); rt = setTimeout(() => fields.forEach(build), 120); };
+  const rebuild = () => { clearTimeout(rt); rt = setTimeout(() => { fields.forEach(build); if (awake || reduce) fields.forEach(f => f.eyes.forEach(e => { e.open = e.goal = e.nextGoal = 1; })); }, 120); };
   addEventListener('resize', rebuild);
   document.fonts?.ready.then(() => fields.forEach(build));
   fields.forEach(build);
   requestAnimationFrame(frame);
+  // on arrival: the eyes open once to show they're there, look around, then go back to sleep
+  if (!reduce) {
+    setTimeout(() => schedule(1, innerWidth / 2, innerHeight / 2, 0.6, 150), 400);
+    setTimeout(() => { if (!awake) schedule(0, innerWidth / 2, innerHeight / 2, 0.4, 600); }, 3400);
+  }
+
+
+  let paintArt = () => {};
+  // ---------- placeholder art: 1-bit concept previews drawn live ----------
+  (() => {
+    const INK = [26, 26, 26], PAPER = [244, 242, 236];
+    const bayer = (() => { let m = [[0]]; for (let s = 0; s < 3; s++) { const n = m.length, o = [];
+      for (let y = 0; y < n * 2; y++) { o[y] = []; for (let x = 0; x < n * 2; x++) { const q = (y < n ? 0 : 2) + (x < n ? 0 : 1);
+        o[y][x] = 4 * m[y % n][x % n] + [0, 2, 3, 1][q]; } } m = o; } return m.map(r => r.map(v => (v + 0.5) / 64)); })();
+    const nz = (x, y) => hash(x * 7 + 3, y * 13 + 5);
+
+    function setup(el, scale = 1) {
+      const cv = el.querySelector('canvas'), r = el.getBoundingClientRect();
+      const dpr = Math.min(devicePixelRatio || 1, 2) * scale;
+      cv.style.imageRendering = scale < 1 ? 'pixelated' : 'auto';
+      cv.width = Math.max(1, Math.round(r.width * dpr)); cv.height = Math.max(1, Math.round(r.height * dpr));
+      const ctx = cv.getContext('2d'); ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      return { cv, ctx, W: r.width, H: r.height, dpr };
+    }
+    // lum(u,v) in 0..1 over a coarse grid, thresholded by a pattern, blitted crisp
+    function dither(S, cell, lum, mode = 'bayer', x0 = 0, w = S.W) {
+      const gw = Math.max(1, Math.ceil(w / cell)), gh = Math.max(1, Math.ceil(S.H / cell));
+      const off = document.createElement('canvas'); off.width = gw; off.height = gh;
+      const ox = off.getContext('2d'), img = ox.createImageData(gw, gh), d = img.data;
+      for (let y = 0; y < gh; y++) for (let x = 0; x < gw; x++) {
+        const L = lum(x / gw, y / gh);
+        let on;
+        if (mode === 'smooth') { const c = Math.round(26 + L * 218), i = (y * gw + x) * 4; d[i] = d[i + 1] = d[i + 2] = c; d[i + 3] = 255; continue; }
+        const t = mode === 'noise' ? nz(x, y) : bayer[y & 7][x & 7];
+        on = L > t; const c = on ? PAPER : INK, i = (y * gw + x) * 4;
+        d[i] = c[0]; d[i + 1] = c[1]; d[i + 2] = c[2]; d[i + 3] = 255;
+      }
+      ox.putImageData(img, 0, 0);
+      S.ctx.imageSmoothingEnabled = mode === 'smooth';
+      S.ctx.drawImage(off, x0, 0, w, S.H);
+    }
+
+    // tiny ray tracer: an eyeball and two spheres on a checkered floor
+    const SPH = [{ c: [0, 1, 0], r: 1, eye: true }, { c: [-2.1, 0.55, 0.9], r: 0.55 }, { c: [1.95, 0.72, 0.7], r: 0.72 }];
+    function hitS(o, d, s) {
+      const oc = [o[0] - s.c[0], o[1] - s.c[1], o[2] - s.c[2]];
+      const b = oc[0] * d[0] + oc[1] * d[1] + oc[2] * d[2], c = oc[0] ** 2 + oc[1] ** 2 + oc[2] ** 2 - s.r * s.r, h = b * b - c;
+      if (h < 0) return -1; const t = -b - Math.sqrt(h); return t > 1e-3 ? t : -1;
+    }
+    function scene(aspect, lightA, look) {
+      const L = (() => { const v = [Math.cos(lightA) * 0.7, 0.85, Math.sin(lightA) * 0.7 - 0.3], n = Math.hypot(...v); return v.map(q => q / n); })();
+      const o = [0, 1.25, -4.6];
+      return (u, v) => {
+        const px = (u - 0.5) * 2 * aspect * 0.62, py = -(v - 0.5) * 2 * 0.62 - 0.08;
+        const dl = Math.hypot(px, py, 1.5), d = [px / dl, py / dl, 1.5 / dl];
+        let best = 1e9, hit = null;
+        for (const s of SPH) { const t = hitS(o, d, s); if (t > 0 && t < best) { best = t; hit = s; } }
+        const tg = d[1] < 0 ? -o[1] / d[1] : -1;
+        if (tg > 0 && tg < best) {
+          const p = [o[0] + d[0] * tg, 0, o[2] + d[2] * tg];
+          let lit = 1; for (const s of SPH) if (hitS(p, L, s) > 0) { lit = 0.35; break; }
+          const chk = ((Math.floor(p[0] * 0.8) + Math.floor(p[2] * 0.8)) & 1) ? 0.72 : 0.86;
+          const fog = Math.min(1, tg / 22);
+          return chk * (0.35 + 0.65 * lit * L[1]) * (1 - fog) + 0.9 * fog;
+        }
+        if (!hit) return 0.93 - v * 0.12;
+        const p = [o[0] + d[0] * best, o[1] + d[1] * best, o[2] + d[2] * best];
+        const n = [(p[0] - hit.c[0]) / hit.r, (p[1] - hit.c[1]) / hit.r, (p[2] - hit.c[2]) / hit.r];
+        let lam = Math.max(0, n[0] * L[0] + n[1] * L[1] + n[2] * L[2]);
+        for (const s of SPH) if (s !== hit && hitS(p, L, s) > 0) { lam *= 0.3; break; }
+        let alb = hit.eye ? 1 : 0.78;
+        if (hit.eye) {
+          const k = n[0] * look[0] + n[1] * look[1] + n[2] * look[2];
+          if (k > 0.955) alb = 0.04; else if (k > 0.86) alb = 0.32 + 0.12 * Math.sin(Math.atan2(n[1] - look[1], n[0] - look[0]) * 14); else if (k > 0.845) alb = 0.1;
+        }
+        const spec = Math.pow(Math.max(0, n[0] * L[0] + n[1] * L[1] - n[2] * L[2]), 30) * 0.6;
+        return Math.min(1, alb * (0.16 + 0.84 * lam) + spec);
+      };
+    }
+    function lookVec(S, el) {
+      const r = el.getBoundingClientRect();
+      const mx = (target.x - (r.left + r.width / 2)) / r.width, my = (target.y - (r.top + r.height * 0.42)) / r.height;
+      const v = [Math.max(-1, Math.min(1, mx)) * 0.9, Math.max(-1, Math.min(1, -my)) * 0.7 + 0.12, -1], n = Math.hypot(...v);
+      return v.map(q => q / n);
+    }
+
+    const draw = {
+      hero(el, S, t) { dither(S, 2, scene(S.W / S.H, t * 0.35, lookVec(S, el))); },
+      dither(el, S) {
+        const f = scene((S.W / 3) / S.H, 0.9, [-0.25, 0.1, -0.96]);
+        const w = S.W / 3;
+        dither(S, 2, f, 'smooth', 0, w); dither(S, 2, f, 'bayer', w, w); dither(S, 2, f, 'noise', w * 2, w);
+        const c = S.ctx; c.fillStyle = '#1a1a1a'; c.fillRect(w - 1, 0, 2, S.H); c.fillRect(w * 2 - 1, 0, 2, S.H);
+        c.font = '600 10px JetBrains Mono, monospace';
+        ['Shaded', 'Bayer 8×8', 'Noise'].forEach((s, i) => { const x = i * w + 8, tw = c.measureText(s.toUpperCase()).width + 10;
+          c.fillStyle = '#f4f2ec'; c.fillRect(x, 8, tw, 18); c.strokeStyle = '#1a1a1a'; c.lineWidth = 1.5; c.strokeRect(x, 8, tw, 18);
+          c.fillStyle = '#1a1a1a'; c.fillText(s.toUpperCase(), x + 5, 21); });
+      },
+      scatter(el, S) {
+        const c = S.ctx, W = S.W, H = S.H;
+        const hgt = (x, y) => vnoise(x * 0.012, y * 0.012) * 0.7 + vnoise(x * 0.03 + 9, y * 0.03) * 0.3;
+        const path = t => [W * (0.05 + 0.9 * t), H * (0.55 + 0.25 * Math.sin(t * 5.2) - 0.15 * t)];
+        const pts = Array.from({ length: 60 }, (_, i) => path(i / 59));
+        const dPath = (x, y) => Math.min(...pts.map(p => Math.hypot(p[0] - x, p[1] - y)));
+        dither(S, 2, (u, v) => { const x = u * W, y = v * H, h = hgt(x, y); const line = Math.abs((h * 12) % 1 - 0.5) > 0.46; return line ? 0.2 : 0.97 - h * 0.08; });
+        c.lineCap = 'round';
+        c.strokeStyle = '#1a1a1a'; c.lineWidth = 14; c.beginPath(); pts.forEach((p, i) => i ? c.lineTo(...p) : c.moveTo(...p)); c.stroke();
+        c.strokeStyle = '#f4f2ec'; c.lineWidth = 10; c.stroke();
+        c.setLineDash([4, 6]); c.strokeStyle = '#1a1a1a'; c.lineWidth = 1; c.stroke(); c.setLineDash([]);
+        const placed = []; const rnd = rng(42);
+        for (let k = 0; k < 2600 && placed.length < 260; k++) {
+          const x = rnd() * W, y = rnd() * H, h = hgt(x, y);
+          const slope = Math.hypot(hgt(x + 3, y) - h, hgt(x, y + 3) - h) * 60;
+          if (slope > 0.55 || dPath(x, y) < 18 + h * 10) continue;
+          const big = h > 0.52 && rnd() > 0.5, r = big ? 7 + rnd() * 4 : 2.5 + rnd() * 1.5;
+          if (placed.some(p => Math.hypot(p[0] - x, p[1] - y) < (p[2] + r) * 1.15)) continue;
+          placed.push([x, y, r]);
+        }
+        placed.sort((a, b) => a[2] - b[2]).forEach(([x, y, r]) => {
+          c.fillStyle = '#f4f2ec'; c.strokeStyle = '#1a1a1a'; c.lineWidth = r > 5 ? 1.6 : 1.2;
+          if (r > 5) { c.beginPath(); c.arc(x, y, r, 0, 7); c.fill(); c.stroke();
+            c.beginPath(); for (let q = -r + 2; q < r; q += 3) { c.moveTo(x + q, y + r * 0.2); c.lineTo(x + q + 2.5, y - r * 0.5); } c.stroke();
+            c.fillStyle = '#1a1a1a'; c.beginPath(); c.arc(x, y, 1.4, 0, 7); c.fill(); }
+          else { c.beginPath(); c.moveTo(x - r, y + r * 0.6); c.lineTo(x, y - r); c.lineTo(x + r, y + r * 0.6); c.stroke(); }
+        });
+        const legend = ['No plants on slopes over 30°', 'Keep 4 m clear of the path', 'Big plants push small ones away'];
+        c.font = '600 10px JetBrains Mono, monospace';
+        const lw = Math.max(...legend.map(s => c.measureText(s).width)) + 20;
+        c.fillStyle = '#f4f2ec'; c.fillRect(W - lw - 10, 10, lw, 58); c.strokeStyle = '#1a1a1a'; c.lineWidth = 1.5; c.strokeRect(W - lw - 10, 10, lw, 58);
+        c.fillStyle = '#1a1a1a'; legend.forEach((s, i) => c.fillText(s, W - lw, 28 + i * 16));
+      },
+      decypress(el, S) {
+        const c = S.ctx, W = S.W, H = S.H, mx = W * 0.68, my = H * 0.3, mr = H * 0.16;
+        dither(S, 2, (u, v) => { const x = u * W, y = v * H, dm = Math.hypot(x - mx, y - my);
+          if (dm < mr) return 1.01; const glow = Math.max(0, 1 - (dm - mr) / (H * 0.5));
+          const mist = Math.max(0, 1 - Math.abs(y - H * 0.72) / (H * 0.1)) * 0.35;
+          return Math.min(1, 0.06 + v * 0.1 + glow * 0.55 + mist); });
+        c.fillStyle = '#1a1a1a';
+        c.beginPath(); c.moveTo(0, H * 0.78); c.bezierCurveTo(W * 0.25, H * 0.66, W * 0.45, H * 0.74, W * 0.62, H * 0.7);
+        c.bezierCurveTo(W * 0.8, H * 0.66, W * 0.92, H * 0.75, W, H * 0.72); c.lineTo(W, H); c.lineTo(0, H); c.fill();
+        const cyp = (x, base, h, w) => { c.beginPath(); c.moveTo(x - w, base); c.bezierCurveTo(x - w * 1.1, base - h * 0.5, x - w * 0.3, base - h * 0.85, x, base - h);
+          c.bezierCurveTo(x + w * 0.3, base - h * 0.85, x + w * 1.1, base - h * 0.5, x + w, base); c.fill(); };
+        [[0.08, 0.5, 0.05], [0.16, 0.62, 0.06], [0.24, 0.42, 0.045], [0.86, 0.55, 0.055], [0.94, 0.4, 0.04]].forEach(([x, h, w]) => cyp(W * x, H * 0.8, H * h, W * w));
+        const kx = W * 0.5, ky = H * 0.7; c.beginPath();
+        c.moveTo(kx - 6, ky); c.lineTo(kx - 4, ky - 16); c.lineTo(kx - 7, ky - 18); c.lineTo(kx - 3, ky - 27); c.arc(kx, ky - 30, 4, Math.PI, 0);
+        c.lineTo(kx + 3, ky - 27); c.lineTo(kx + 7, ky - 18); c.lineTo(kx + 4, ky - 16); c.lineTo(kx + 6, ky); c.fill();
+        c.strokeStyle = '#1a1a1a'; c.lineWidth = 2; c.beginPath(); c.moveTo(kx + 6, ky - 20); c.lineTo(kx + 20, ky - 44); c.stroke();
+        c.fillStyle = '#f4f2ec'; c.font = '900 ' + Math.round(H * 0.11) + 'px "Big Shoulders Display", Impact, sans-serif';
+        c.fillText('DECYPRESS', W * 0.06, H * 0.2);
+      },
+      board(el, S) {
+        const c = S.ctx, W = S.W, H = S.H, rnd = rng(9);
+        c.fillStyle = '#f4f2ec'; c.fillRect(0, 0, W, H);
+        c.strokeStyle = 'rgba(26,26,26,.18)'; c.lineWidth = 1;
+        for (let q = -H; q < W; q += 7) { c.beginPath(); c.moveTo(q, H); c.lineTo(q + H, 0); c.stroke(); }
+        const s = Math.min(W, H) * 0.13, gx = W * 0.08, gy = H * 0.12;
+        const rooms = [[0, 0], [1, 0], [1, 1], [2, 1], [2, 2], [3, 2], [3, 3], [4, 3]];
+        rooms.forEach(([i, j], k) => { const x = gx + i * s, y = gy + j * s;
+          c.fillStyle = k % 2 ? '#1a1a1a' : '#f4f2ec'; c.fillRect(x, y, s, s); c.strokeStyle = '#1a1a1a'; c.lineWidth = 2; c.strokeRect(x, y, s, s);
+          if (k % 2 === 0) { c.lineWidth = 1; c.beginPath(); for (let q = 3; q < s; q += 5) { c.moveTo(x + 4, y + q); c.lineTo(x + s * 0.3, y + q); } c.stroke(); }
+          c.fillStyle = k % 2 ? '#f4f2ec' : '#1a1a1a'; c.font = '600 ' + Math.round(s * 0.22) + 'px JetBrains Mono, monospace'; c.fillText('B' + (k + 1), x + s * 0.55, y + s * 0.85); });
+        const cw = s * 0.95, ch = s * 1.35;
+        [-0.22, 0, 0.22].forEach((a, i) => { c.save(); c.translate(W * 0.74, H * 0.9); c.rotate(a);
+          c.fillStyle = '#f4f2ec'; c.strokeStyle = '#1a1a1a'; c.lineWidth = 2; c.beginPath(); c.roundRect(-cw / 2, -ch, cw, ch, 6); c.fill(); c.stroke();
+          c.lineWidth = 1; c.strokeRect(-cw / 2 + 5, -ch + 5, cw - 10, ch * 0.45);
+          c.fillStyle = '#1a1a1a'; c.beginPath(); c.arc(0, -ch + 5 + ch * 0.225, cw * 0.14 + i * 2, 0, 7); c.fill();
+          c.fillRect(-cw / 2 + 8, -ch * 0.4, cw - 16, 2); c.fillRect(-cw / 2 + 8, -ch * 0.32, cw * 0.5, 2); c.restore(); });
+        [[W * 0.52, H * 0.66, 0.2, 5], [W * 0.6, H * 0.78, -0.3, 3]].forEach(([x, y, a, n]) => { const d = s * 0.5; c.save(); c.translate(x, y); c.rotate(a);
+          c.fillStyle = '#f4f2ec'; c.strokeStyle = '#1a1a1a'; c.lineWidth = 2; c.beginPath(); c.roundRect(-d / 2, -d / 2, d, d, 5); c.fill(); c.stroke();
+          const pp = { 3: [[-1, -1], [0, 0], [1, 1]], 5: [[-1, -1], [1, -1], [0, 0], [-1, 1], [1, 1]] }[n];
+          c.fillStyle = '#1a1a1a'; pp.forEach(([u, v]) => { c.beginPath(); c.arc(u * d * 0.26, v * d * 0.26, d * 0.08, 0, 7); c.fill(); }); c.restore(); });
+      }
+    };
+
+    const els = [...document.querySelectorAll('.art[data-art]')].filter(el => draw[el.dataset.art]);
+    const states = new Map();
+    const scaleOf = el => (reduce || el.dataset.dev === 'done') ? 1 : 0.07;
+    function paintOne(el, scale) { const S = setup(el, scale); states.set(el, S); draw[el.dataset.art](el, S, performance.now() / 1000); }
+    function paintAll() { els.forEach(el => paintOne(el, scaleOf(el))); }
+    paintArt = el => { if (draw[el.dataset.art]) paintOne(el, 1); };
+    // develop: each artwork resolves from coarse blocks to full detail when it scrolls into view
+    function develop(el) {
+      if (el.dataset.dev) return; el.dataset.dev = 'running';
+      const steps = [0.1, 0.16, 0.26, 0.42, 0.66, 1];
+      steps.forEach((k, i) => setTimeout(() => { paintOne(el, k); if (k === 1) el.dataset.dev = 'done'; }, i * 95));
+    }
+    if (!reduce && 'IntersectionObserver' in window) {
+      const io = new IntersectionObserver(es => es.forEach(e => {
+        if (!e.isIntersecting) return;
+        if (e.target.dataset.art === 'hero' && document.body.classList.contains('intro-running')) return;
+        develop(e.target); io.unobserve(e.target);
+      }), { threshold: 0.25 });
+      els.forEach(el => io.observe(el));
+      const hero0 = els.find(el => el.dataset.art === 'hero');
+      if (hero0) new MutationObserver(() => { if (document.body.classList.contains('intro-done')) setTimeout(() => develop(hero0), 350); })
+        .observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    }
+    let heroVisible = false;
+    const hero = els.find(el => el.dataset.art === 'hero');
+    if (hero && 'IntersectionObserver' in window) new IntersectionObserver(es => { heroVisible = es[0].isIntersecting; }).observe(hero);
+    let lastPaint = 0;
+    function tick(now) {
+      if (hero && heroVisible && !reduce && now - lastPaint > 40) {
+        lastPaint = now; const S = states.get(hero); if (S && hero.dataset.dev === 'done') draw.hero(hero, S, now / 1000);
+      }
+      requestAnimationFrame(tick);
+    }
+    let at; addEventListener('resize', () => { clearTimeout(at); at = setTimeout(paintAll, 150); });
+    (document.fonts ? document.fonts.ready : Promise.resolve()).then(paintAll);
+    paintAll(); requestAnimationFrame(tick);
+  })();
+
+
+  // ---------- smooth scroll · pupil-dive intro · iris transitions ----------
+  (() => {
+    const ease = { oc: t => 1 - Math.pow(1 - t, 3), ic: t => t * t * t, ioc: t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2 };
+    const clamp01 = t => Math.max(0, Math.min(1, t));
+
+    // smooth scroll (falls back to native scrolling if the library didn't load)
+    let lenis = null;
+    if (!reduce && window.Lenis) {
+      lenis = new Lenis({ lerp: 0.09, wheelMultiplier: 1, smoothWheel: true }); window.__lenis = lenis;
+      const raf = t => { lenis.raf(t); requestAnimationFrame(raf); };
+      requestAnimationFrame(raf);
+    }
+    const jumpTo = el => {
+      if (lenis) lenis.scrollTo(el, { immediate: true, force: true, offset: el.id === 'top' ? -9999 : -64 });
+      else el.scrollIntoView({ block: 'start' });
+    };
+
+    // one full-screen canvas shared by the intro and the iris wipes
+    const ov = document.createElement('canvas');
+    ov.className = 'fx-overlay'; ov.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(ov);
+    const oc = ov.getContext('2d');
+    let OW = 0, OH = 0;
+    function sizeOverlay() {
+      const d = Math.min(devicePixelRatio || 1, 2); OW = innerWidth; OH = innerHeight;
+      ov.width = Math.round(OW * d); ov.height = Math.round(OH * d); oc.setTransform(d, 0, 0, d, 0, 0);
+    }
+    const INK = '#141414', PAPER = '#f2f0eb';
+
+    // an iris ring around a round hole: the hole is the page, the ring is the eye closing on it
+    function irisFrame(r, cx, cy) {
+      oc.clearRect(0, 0, OW, OH);
+      oc.fillStyle = INK; oc.fillRect(0, 0, OW, OH);
+      oc.save(); oc.globalCompositeOperation = 'destination-out';
+      oc.beginPath(); oc.arc(cx, cy, Math.max(0, r), 0, Math.PI * 2); oc.fill(); oc.restore();
+      if (r > 1) {
+        oc.strokeStyle = PAPER; oc.lineCap = 'round';
+        const band = Math.min(90, 26 + r * 0.12);
+        oc.lineWidth = 1; oc.globalAlpha = 0.55; oc.beginPath();
+        for (let i = 0; i < 90; i++) {
+          const a = i / 90 * Math.PI * 2 + (i % 3) * 0.013, l = band * (0.45 + ((i * 37) % 11) / 20);
+          oc.moveTo(cx + Math.cos(a) * (r + 3), cy + Math.sin(a) * (r + 3));
+          oc.lineTo(cx + Math.cos(a) * (r + l), cy + Math.sin(a) * (r + l));
+        }
+        oc.stroke(); oc.globalAlpha = 1; oc.lineWidth = 2.2;
+        oc.beginPath(); oc.arc(cx, cy, r + 1, 0, Math.PI * 2); oc.stroke();
+        oc.lineWidth = 1.2; oc.beginPath(); oc.arc(cx, cy, r + band + 4, 0, Math.PI * 2); oc.stroke();
+      }
+    }
+    function animate(ms, step) {
+      return new Promise(res => { const t0 = performance.now();
+        const f = now => { const t = clamp01((now - t0) / ms); step(t); t < 1 ? requestAnimationFrame(f) : res(); };
+        requestAnimationFrame(f); });
+    }
+
+    // 2 · iris wipe between sections
+    let busy = false;
+    document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', async ev => {
+      const id = a.getAttribute('href').slice(1), el = id && document.getElementById(id);
+      if (!el) return;
+      ev.preventDefault();
+      if (reduce || busy) { jumpTo(el); return; }
+      busy = true; sizeOverlay(); ov.style.display = 'block';
+      const cx = OW / 2, cy = OH / 2, R = Math.hypot(OW, OH) / 2 + 100;
+      await animate(420, t => irisFrame(R * (1 - ease.ic(t)), cx, cy));
+      jumpTo(el);
+      await new Promise(r => setTimeout(r, 90));
+      await animate(520, t => irisFrame(R * ease.oc(t), cx, cy));
+      ov.style.display = 'none'; busy = false;
+      history.replaceState(null, '', '#' + id);
+    }));
+
+    // 1 · intro: an eye opens, glances at you, and the camera dives through the pupil into the page
+    let seen = false;
+    try { seen = sessionStorage.getItem('tyz-intro') === '1'; } catch (e) {}
+    if (reduce || seen) { document.body.classList.add('intro-done'); }
+    else {
+      try { sessionStorage.setItem('tyz-intro', '1'); } catch (e) {}
+      sizeOverlay(); ov.style.display = 'block'; ov.classList.add('intro');
+      document.body.classList.add('intro-running');
+      if (lenis) lenis.stop();
+      const skipHint = document.createElement('button');
+      skipHint.type = 'button'; skipHint.className = 'fx-skip'; skipHint.textContent = 'Skip intro';
+      document.body.appendChild(skipHint);
+      const lashes = Array.from({ length: 11 }, (_, i) => 0.85 + ((i * 53) % 9) / 20);
+      let t0 = performance.now(), dilate = 1;
+      const DUR = { open: 0.95, look: 0.75, dive: 1.0, reveal: 0.75 };
+      const T1 = DUR.open, T2 = T1 + DUR.look, T3 = T2 + DUR.dive, T4 = T3 + DUR.reveal;
+      const skip = () => { const t = (performance.now() - t0) / 1000; if (t < T3) t0 = performance.now() - T3 * 1000; };
+      skipHint.addEventListener('click', skip);
+      ov.addEventListener('click', skip);
+      addEventListener('keydown', skip, { once: true });
+      addEventListener('wheel', skip, { once: true, passive: true });
+
+      function eye(open, px, py, zoom, pr) {
+        const W = Math.min(OW * 0.62, 820), w = W, h = W * 0.42, hh = h / 2 * open;
+        const cx = OW / 2, cy = OH / 2 - 10, ir = h * 0.42, ix = cx + px * w * 0.18, iy = cy + py * h * 0.14;
+        oc.fillStyle = PAPER; oc.fillRect(0, 0, OW, OH);
+        oc.save();
+        oc.translate(ix, iy); oc.scale(zoom, zoom); oc.translate(-ix, -iy);
+        oc.translate(cx, cy); oc.lineCap = 'round'; oc.lineJoin = 'round';
+        const lidPath = (k, j) => { oc.moveTo(-w / 2 + j, 0); oc.quadraticCurveTo(j * 2, -hh * 2 * k, w / 2 - j, 0); oc.quadraticCurveTo(-j, hh * 1.7 * k, -w / 2 + j, 0); };
+        // crease and lashes
+        oc.strokeStyle = INK;
+        if (open > 0.3) { oc.lineWidth = 3; oc.beginPath(); oc.moveTo(-w * 0.4, -hh * 1.0); oc.quadraticCurveTo(0, -hh * 2.8, w * 0.42, -hh * 0.95); oc.stroke(); }
+        oc.lineWidth = 3.4; oc.beginPath();
+        lashes.forEach((L, n) => { const t = 0.12 + n * 0.076, bx = (1 - t) * (1 - t) * (-w / 2) + t * t * (w / 2), by = 2 * (1 - t) * t * (-hh * 2);
+          const ang = open > 0.1 ? -Math.PI / 2 + (t - 0.5) * 1.7 : Math.PI / 2 - (t - 0.5) * 1.7, len = h * 0.3 * L;
+          oc.moveTo(bx, by); oc.lineTo(bx + Math.cos(ang) * len, by + Math.sin(ang) * len); });
+        oc.stroke();
+        if (open > 0.04) {
+          oc.beginPath(); lidPath(1, 0); oc.fillStyle = '#fbfaf6'; oc.fill();
+          oc.save(); oc.clip();
+          const x = ix - cx, y = iy - cy;
+          oc.lineWidth = 3; oc.beginPath(); oc.arc(x, y, ir, 0, Math.PI * 2); oc.stroke();
+          oc.lineWidth = 1.4; oc.beginPath();
+          for (let n = 0; n < 48; n++) { const a = n / 48 * Math.PI * 2; oc.moveTo(x + Math.cos(a) * ir * 0.5 * pr, y + Math.sin(a) * ir * 0.5 * pr); oc.lineTo(x + Math.cos(a) * ir * 0.94, y + Math.sin(a) * ir * 0.94); }
+          oc.stroke();
+          oc.globalAlpha = 0.35; oc.lineWidth = 1; oc.beginPath();
+          for (let q = -ir; q <= ir; q += 5) { oc.moveTo(x + q - ir, y + ir); oc.lineTo(x + q + ir, y - ir); }
+          oc.stroke(); oc.globalAlpha = 1;
+          oc.fillStyle = INK; oc.beginPath(); oc.arc(x, y, ir * 0.46 * pr, 0, Math.PI * 2); oc.fill();
+          oc.fillStyle = '#fbfaf6'; oc.beginPath(); oc.arc(x - ir * 0.3, y - ir * 0.34, ir * 0.12, 0, Math.PI * 2); oc.fill();
+          oc.lineWidth = 5; oc.beginPath(); oc.moveTo(-w / 2, 0); oc.quadraticCurveTo(0, -hh * 1.8, w / 2, 0); oc.stroke();
+          oc.restore();
+        }
+        oc.lineWidth = 3.2; oc.beginPath(); lidPath(1, 0); oc.stroke();
+        oc.lineWidth = 1.4; oc.globalAlpha = 0.6; oc.beginPath(); lidPath(1.05, 4); oc.stroke(); oc.globalAlpha = 1;
+        oc.restore();
+        if (zoom < 1.4) {
+          oc.fillStyle = INK; oc.font = '600 12px JetBrains Mono, monospace'; oc.textAlign = 'center';
+          oc.globalAlpha = clamp01(open * 1.5) * clamp01(2 - zoom);
+          oc.fillText('TONG YE ZHANG  ·  TECHNICAL ARTIST', OW / 2, OH / 2 + h * 0.62 + 40);
+          oc.globalAlpha = 1; oc.textAlign = 'start';
+        }
+        return { ix, iy, ir };
+      }
+
+      const run = now => {
+        const t = (now - t0) / 1000;
+        if (t < T3) {
+          const open = t < T1 ? ease.oc(clamp01(t / T1)) : 1;
+          let px = 0, py = 0;
+          if (t >= T1 && t < T2) { const k = (t - T1) / DUR.look; const a = Math.sin(k * Math.PI);
+            const mx = pointer ? (pointer.x / OW - 0.5) * 2 : -0.6, my = pointer ? (pointer.y / OH - 0.5) * 2 : -0.3; px = mx * a; py = my * a; }
+          const dk = t >= T2 ? ease.ic(clamp01((t - T2) / DUR.dive)) : 0;
+          dilate += ((t >= T2 - 0.25 ? 1.5 : 1) - dilate) * 0.12;
+          const zoom = 1 + dk * dk * 90;
+          eye(t < 0.05 ? 0 : open, px, py, zoom, dilate);
+          requestAnimationFrame(run);
+        } else if (t < T4) {
+          if (!document.body.classList.contains('intro-done')) { document.body.classList.remove('intro-running'); document.body.classList.add('intro-done'); skipHint.remove(); }
+          const R = Math.hypot(OW, OH) / 2 + 100;
+          irisFrame(R * ease.oc(clamp01((t - T3) / DUR.reveal)), OW / 2, OH / 2);
+          requestAnimationFrame(run);
+        } else {
+          ov.style.display = 'none'; ov.classList.remove('intro');
+          if (lenis) lenis.start();
+        }
+      };
+      requestAnimationFrame(run);
+    }
+    addEventListener('resize', () => { if (ov.style.display === 'block') sizeOverlay(); });
+
+  })();
+
+
+  // ---------- project blocks: reading-step chips + expandable case studies ----------
+  (() => {
+    const blocks = [...document.querySelectorAll('.ta')];
+    const labels = ['Problem', 'Built for', 'Approach', 'Stuck on', 'Result'];
+
+    // 1 · as you read down a project, the sticky image says which step you're on —
+    // pick whichever row's vertical center is nearest the viewport's center, recomputed on scroll.
+    // (an IntersectionObserver center-band used to drive this; it broke on rows taller than the
+    // viewport and on short blocks whose last row never reached the band. plain rect math is exact.)
+    const stepUpdaters = [];
+    blocks.forEach(b => {
+      const slot = b.querySelector('.slot'), rows = [...b.querySelectorAll('.process > div')];
+      if (!slot || !rows.length) return;
+      const chip = document.createElement('span'); chip.className = 'step-chip'; chip.textContent = '01 · Problem';
+      slot.appendChild(chip);
+      let current = -1;
+      const setStep = i => {
+        if (i === current) return; current = i;
+        rows.forEach((r, k) => r.classList.toggle('active', k === i));
+        chip.textContent = String(i + 1).padStart(2, '0') + ' · ' + (labels[i] || '');
+        slot.querySelectorAll('[data-step]').forEach(m => { m.hidden = +m.dataset.step !== i; });
+      };
+      setStep(0);
+      stepUpdaters.push(() => {
+        const vCenter = innerHeight / 2;
+        let best = 0, bestDist = Infinity;
+        rows.forEach((r, k) => {
+          const rect = r.getBoundingClientRect();
+          if (rect.bottom <= 0 || rect.top >= innerHeight) return; // fully offscreen rows don't compete
+          const dist = Math.abs((rect.top + rect.height / 2) - vCenter);
+          if (dist < bestDist) { bestDist = dist; best = k; }
+        });
+        setStep(best);
+      });
+    });
+    if (stepUpdaters.length) {
+      let ticking = false;
+      const runAll = () => { stepUpdaters.forEach(fn => fn()); ticking = false; };
+      const onScroll = () => { if (ticking) return; ticking = true; requestAnimationFrame(runAll); };
+      addEventListener('scroll', onScroll, { passive: true });
+      addEventListener('resize', onScroll);
+      if (window.__lenis) window.__lenis.on('scroll', onScroll);
+      runAll();
+    }
+
+    // mockups develop too (they're HTML, so a stepped blur stands in for the pixel resolve)
+    if (!reduce && 'IntersectionObserver' in window) {
+      const mio = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('develop'); mio.unobserve(e.target); } }), { threshold: 0.25 });
+      document.querySelectorAll('.slot.mock').forEach(m => mio.observe(m));
+    }
+
+    // 2 · open a block into a full case study
+    const logs = [
+      [['Sep 27', 'Interview an artist about what goes wrong at export. Write the first three checks.'], ['Sep 28', 'Build the side panel and the one-click fixes.'], ['Sep 29', 'Artist tests it on a real scene. Record the demo.']],
+      [['Sep 30', 'Test scene and full-screen pass. First Bayer dither.'], ['Oct 1', 'Blue-noise pattern and the camera-motion problem.'], ['Oct 2', 'Sliders for the art director, embed the live demo here.']],
+      [['Oct 3', 'Slope and height rules on a test terrain.'], ['Oct 4', 'Path clearance and big-pushes-small spacing.'], ['Oct 5', 'Expose the artist inputs, render before and after.']]
+    ];
+    let open = null, lastFocus = null;
+    function openCase(i) {
+      const b = blocks[i]; if (!b || open) return;
+      lastFocus = document.activeElement;
+      const r = b.getBoundingClientRect();
+      const title = b.querySelector('h3').textContent.trim();
+      const spec = b.querySelector('.spec').cloneNode(true);
+      const media = b.querySelector('.slot');
+      const mediaCopy = media.cloneNode(true);
+      mediaCopy.querySelectorAll('.step-chip').forEach(n => n.remove());
+      mediaCopy.classList.remove('develop');
+      const dl = b.querySelector('.process').cloneNode(true);
+      dl.querySelectorAll('.active').forEach(n => n.classList.remove('active'));
+      const facts = [['Status', spec.querySelector('.status')?.textContent || ''], ['Tools', spec.querySelector('.meta')?.textContent || ''],
+        ['My part', 'Everything: research, build and testing, with AI assistance on code.'], ['Links', 'GitHub repo and demo appear here when the build ships.']];
+      const c = document.createElement('div');
+      c.className = 'case'; c.setAttribute('role', 'dialog'); c.setAttribute('aria-modal', 'true'); c.setAttribute('aria-label', title);
+      c.setAttribute('data-lenis-prevent', '');
+      c.innerHTML = `<div class="case-bar"><span class="meta">Case study ${i + 1} of ${blocks.length}</span><button type="button" class="case-close">Close ✕</button></div>
+        <div class="case-body">
+          <div class="case-spec"></div><h2></h2><div class="case-media"></div>
+          <div class="case-grid"><div class="case-proc"></div><dl class="case-facts"></dl></div>
+          <section><p class="sub">Build log</p><ul class="case-log"></ul></section>
+          <button type="button" class="case-btn case-next">Next: ${blocks[(i + 1) % blocks.length].querySelector('h3').textContent.trim()} →</button>
+        </div>`;
+      c.querySelector('.case-spec').appendChild(spec);
+      c.querySelector('h2').textContent = title;
+      c.querySelector('.case-media').appendChild(mediaCopy);
+      c.querySelector('.case-proc').appendChild(dl);
+      c.querySelector('.case-facts').innerHTML = facts.map(([k, v]) => `<div><dt>${k}</dt><dd></dd></div>`).join('');
+      c.querySelectorAll('.case-facts dd').forEach((dd, k) => dd.textContent = facts[k][1]);
+      c.querySelector('.case-log').innerHTML = (logs[i] || []).map(() => '<li><time></time><span class="todo"></span></li>').join('');
+      c.querySelectorAll('.case-log li').forEach((li, k) => { li.querySelector('time').textContent = logs[i][k][0]; li.querySelector('span').textContent = 'Planned · ' + logs[i][k][1]; });
+      // start scaled/positioned to sit exactly over the block's own rectangle, then grow to full screen —
+      // a transform-only animation so the compositor handles it (no per-frame layout/paint of the tall content)
+      const W = innerWidth, H = innerHeight;
+      const sx = Math.max(r.width, 1) / W, sy = Math.max(r.height, 1) / H;
+      c.style.transform = `translate(${r.left}px,${r.top}px) scale(${sx},${sy})`;
+      if (reduce) c.style.transition = 'none';
+      document.body.appendChild(c);
+      if (mediaCopy.dataset.art) { mediaCopy.dataset.dev = 'done'; requestAnimationFrame(() => paintArt(mediaCopy)); }
+      requestAnimationFrame(() => requestAnimationFrame(() => { c.style.transform = 'translate(0,0) scale(1,1)'; }));
+      c.addEventListener('transitionend', () => { c.classList.add('settled'); c.style.willChange = 'auto'; if (mediaCopy.dataset.art) paintArt(mediaCopy); }, { once: true });
+      if (window.__lenis) window.__lenis.stop();
+      document.documentElement.style.overflow = 'hidden';
+      open = { c, b, i };
+      c.querySelector('.case-close').addEventListener('click', closeCase);
+      c.querySelector('.case-next').addEventListener('click', () => { const n = (i + 1) % blocks.length; closeCase(true).then(() => openCase(n)); });
+      c.querySelector('.case-close').focus({ preventScroll: true });
+    }
+    function closeCase(quick) {
+      return new Promise(res => {
+        if (!open) return res();
+        const { c, b } = open; open = null;
+        const done = () => { c.remove(); document.documentElement.style.overflow = ''; if (window.__lenis) window.__lenis.start(); if (quick !== true && lastFocus) lastFocus.focus({ preventScroll: true }); res(); };
+        if (reduce || quick === true) return done();
+        c.classList.remove('settled'); c.style.willChange = 'transform';
+        const r = b.getBoundingClientRect(), W = innerWidth, H = innerHeight;
+        const sx = Math.max(r.width, 1) / W, sy = Math.max(r.height, 1) / H;
+        // force layout so the transform-remove above is committed before the shrink starts animating
+        c.getBoundingClientRect();
+        c.style.transform = `translate(${r.left}px,${r.top}px) scale(${sx},${sy})`;
+        c.addEventListener('transitionend', done, { once: true });
+        setTimeout(done, 900);
+      });
+    }
+    document.querySelectorAll('.case-open').forEach(btn => btn.addEventListener('click', () => openCase(+btn.dataset.case)));
+    blocks.forEach((b, i) => b.querySelector('.case-btn')?.addEventListener('click', () => openCase(i)));
+    addEventListener('keydown', e => { if (e.key === 'Escape' && open) closeCase(); });
+  })();
 
   // copy email
   const btn = document.getElementById('copy'), mail = document.getElementById('email');
@@ -534,5 +1345,6 @@
   });
 })();
 </script>
+
 </body>
 </html>
